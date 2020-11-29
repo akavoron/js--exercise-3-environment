@@ -1,4 +1,5 @@
-import {sum, mul, stringsLength} from './ex-1';
+import {sum, mul, stringsLength, sumOfInlineDigits} from './ex-1';
+import {TypeException, ParamLengthException} from './exceptions';
 
 describe('The sum function', () => {
 
@@ -13,7 +14,7 @@ describe('The sum function', () => {
         expect(sum(-2, -3)).toBe(-5);
     });
 
-    it("push an error when the param type is wrong", () => {
+    it("push a TypeException when the param type is wrong", () => {
         try {
             expect(sum([2],3 )).toThrow(TypeException);
             expect(sum(2, [3])).toThrow(TypeException);
@@ -38,7 +39,7 @@ describe('The mul function', () => {
         expect(mul(-2, -3)).toBe(6);
     });
 
-    it("push an error when the param type is wrong", () => {
+    it("push a TypeException when the param type is wrong", () => {
         try {
             expect(mul([2],3 )).toThrow(TypeException);
             expect(mul(2, [3])).toThrow(TypeException);
@@ -53,11 +54,11 @@ describe('The mul function', () => {
 describe('The stringsLength function', () => {
 
     it('works correctly with right param\'s type', () => {
-        let s1 = 'love';
-        let s2 = 'April';
-        let s3 = 'sun';
-        let s4 = 'a few words';
-        let s5 = ' ';
+        const s1 = 'love';
+        const s2 = 'April';
+        const s3 = 'sun';
+        const s4 = 'a few words';
+        const s5 = ' ';
 
         expect(stringsLength('some', 'text here')).toBe(13);
         expect(stringsLength(s1, s2)).toBe(s1.length + s2.length);
@@ -68,7 +69,7 @@ describe('The stringsLength function', () => {
         expect(stringsLength(s5, s4)).toBe(s5.length + s4.length);
     });
 
-    it("push an error when the param type is wrong", () => {
+    it("push a TypeException when the param type is wrong", () => {
         try {
             expect(stringsLength(2, 'test')).toThrow(TypeException);
             expect(stringsLength('test', 3)).toThrow(TypeException);
@@ -89,12 +90,21 @@ describe('The sumOfInlineDigits function', () => {
         expect(sumOfInlineDigits(777)).toBe(21);
     });
 
-    it("push an error when the param type is wrong", () => {
+    it("push a TypeException when the param type is wrong", () => {
         try {
             expect(sumOfInlineDigits('123')).toThrow(TypeException);
             expect(sumOfInlineDigits(undefined)).toThrow(TypeException);
             expect(sumOfInlineDigits(null)).toThrow(TypeException);
             expect(sumOfInlineDigits([1,2,3])).toThrow(TypeException);
         } catch (err) {}
-      });
+    });
+
+    it("push a ParamLengthException when the number's length is not 3", () => {
+        try {
+            expect(sumOfInlineDigits('1')).toThrow(ParamLengthException);
+            expect(sumOfInlineDigits('12')).toThrow(ParamLengthException);
+            expect(sumOfInlineDigits('1234')).toThrow(ParamLengthException);
+            expect(sumOfInlineDigits('12345')).toThrow(ParamLengthException);
+        } catch (err) {}
+    });
 });

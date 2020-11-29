@@ -1,4 +1,6 @@
 import {log} from './render';
+import {TypeException, ParamLengthException} from './exceptions';
+
 
 /**
  * 1. В переменных a и b хранятся числа. 
@@ -14,9 +16,16 @@ import {log} from './render';
  * @param {number} b
  * @return {number}
  */
-function mul(a, b) {}
+export function mul(a, b) {
+    if (typeof a !== 'number' || typeof b !== 'number') {
+        throw new TypeException('number');
+    }
+
+    return a * b;
+}
 
 log(mul(2,3));
+
 
 /*
  * Сумма двух чисел
@@ -25,9 +34,16 @@ log(mul(2,3));
  * @param {number} b
  * @return {number}
  */
-function sum(a, b) {}
+export function sum(a, b) {
+    if (typeof a !== 'number' || typeof b !== 'number') {
+        throw new TypeException('number');
+    }
+
+    return a + b;
+}
 
 log(sum(2,3));
+
 
 /**
  * 2. В двух переменных хранятся строки 
@@ -39,9 +55,16 @@ log(sum(2,3));
  * @param {string} secondString
  * @return {number}
  */
-function stringsLength(firstString, secondString) {}
+export function stringsLength(firstString, secondString) {
+    if (typeof firstString !== 'string' || typeof secondString !== 'string') {
+        throw new TypeException('string');
+    }
+    
+    return firstString.length + secondString.length;
+}
 
 log(stringsLength('some', 'text here'));
+
 
 /**
  * 3. Написать программу, которая запрашивает
@@ -52,8 +75,23 @@ log(stringsLength('some', 'text here'));
  * @param {number} number
  * @return {number}
  */
+export function sumOfInlineDigits(number) {
+    if (typeof number !== 'number') {
+        throw new TypeException('number');
+    }
+    if (String(number).length !== 3) {
+        throw new ParamLengthException();
+    }
+    
+    let accumulator = 0;
+    const numString = String(number);
+    
+    for(let i = 0; i < number.length; i++) {
+        accumulator += numString[i];
+    }
 
-function sumOfInlineDigits(number) {}
+    return accumulator;
+}
 
-let num = prompt('Type a number with 3 digits:')
+const num = +prompt('Type a number with 3 digits:')
 log(sumOfInlineDigits(num));
