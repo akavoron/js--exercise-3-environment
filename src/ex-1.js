@@ -27,7 +27,7 @@ export function mul(a, b) {
 log(mul(2,3));
 
 
-/*
+/**
  * Сумма двух чисел
  *
  * @param {number} a
@@ -50,12 +50,16 @@ log(sum(2,3));
  * символов. Написать программу, которая 
  * выведет в консоль суммарное количество 
  * символов в обоих строках.
+ */
+
+/**
+ * Суммарное количество символов в 2 строках
  * 
  * @param {string} firstString
  * @param {string} secondString
  * @return {number}
  */
-export function stringsLength(firstString, secondString) {
+export function getStringsLength(firstString, secondString) {
     if (typeof firstString !== 'string' || typeof secondString !== 'string') {
         throw new TypeException('string');
     }
@@ -63,7 +67,7 @@ export function stringsLength(firstString, secondString) {
     return firstString.length + secondString.length;
 }
 
-log(stringsLength('some', 'text here'));
+log(getStringsLength('some', 'text here'));
 
 
 /**
@@ -71,11 +75,15 @@ log(stringsLength('some', 'text here'));
  * у пользователя ввод трёхзначного числа
  * , а потом выводит в консоль сумму цифр
  * введённого числа.
+ */
+
+/**
+ * Сумма всех цифр в числе
  * 
  * @param {number} number
  * @return {number}
  */
-export function sumOfInlineDigits(number) {
+export function getSumOfInlineDigits(number) {
     if (typeof number !== 'number') {
         throw new TypeException('number');
     }
@@ -94,4 +102,4 @@ export function sumOfInlineDigits(number) {
 }
 
 const num = +prompt('Type a number with 3 digits:')
-log(sumOfInlineDigits(num));
+log(getSumOfInlineDigits(num));
