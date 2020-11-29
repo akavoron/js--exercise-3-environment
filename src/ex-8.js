@@ -7,7 +7,7 @@ import {log} from './render';
  * @param {string} dateString
  * @return {number}
  */
-function getDayOfWeek() {}
+function getDayOfWeek(dateString) {}
 
 /**
  * 2. Написать программу, которая выводит в консоль 

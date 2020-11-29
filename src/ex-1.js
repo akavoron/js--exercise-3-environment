@@ -5,12 +5,29 @@ import {log} from './render';
  * Написать программу, которая выводит 
  * в консоль произведение и сумму этих
  * чисел.
+ */
+
+/**
+ * Произведение двух чисел
  * 
  * @param {number} a
  * @param {number} b
- * @return {undefined}
+ * @return {number}
  */
 function mul(a, b) {}
+
+log(mul(2,3));
+
+/*
+ * Сумма двух чисел
+ *
+ * @param {number} a
+ * @param {number} b
+ * @return {number}
+ */
+function sum(a, b) {}
+
+log(sum(2,3));
 
 /**
  * 2. В двух переменных хранятся строки 
@@ -24,6 +41,8 @@ function mul(a, b) {}
  */
 function stringsLength(firstString, secondString) {}
 
+log(stringsLength('some', 'text here'));
+
 /**
  * 3. Написать программу, которая запрашивает
  * у пользователя ввод трёхзначного числа
@@ -31,7 +50,10 @@ function stringsLength(firstString, secondString) {}
  * введённого числа.
  * 
  * @param {number} number
- * @return {undefined}
+ * @return {number}
  */
 
 function sumOfInlineDigits(number) {}
+
+let num = prompt('Type a number with 3 digits:')
+log(sumOfInlineDigits(num));
