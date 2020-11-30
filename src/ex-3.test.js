@@ -4,7 +4,9 @@ import {TypeException, RangeException} from './exceptions';
 describe('The sumInRange function', () => {
     it('works correctly with right param\'s type', () => {
         expect(sumInRange(1, 5)).toBe(15);
+        expect(sumInRange(5, 1)).toBe(15);
         expect(sumInRange(3, 7)).toBe(25);
+        expect(sumInRange(7, 3)).toBe(25);
         expect(sumInRange(10, 13)).toBe(46);
     });
     it("push a TypeException when the param type is wrong", () => {
@@ -58,6 +60,7 @@ describe('The getMultTable function', () => {
 describe('The averageOfOdd function', () => {
     it('works correctly with right param\'s type', () => {
         expect(averageOfOdd(1, 5)).toBe(3); // 1+3+5 = 9/3 = 3
+        expect(averageOfOdd(5, 1)).toBe(3); // 1+3+5 = 9/3 = 3
         expect(averageOfOdd(4, 10)).toBe(7); // 5+7+9 = 21/3 = 7
         expect(averageOfOdd(-3, 5)).toBe(0.833); // (-3)+(-1)+0+1+3+5 = 5/6 = 0.833
         expect(averageOfOdd(-5, -10)).toBe(-7); // (-5)+(-7)+(-9) = -21/3 = -7

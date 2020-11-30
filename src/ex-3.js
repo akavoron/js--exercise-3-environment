@@ -1,4 +1,4 @@
-import {log} from './render';
+import {log, askFor} from './render';
 import {TypeException, RangeException} from './exceptions';
 
 
@@ -14,7 +14,25 @@ import {TypeException, RangeException} from './exceptions';
  * @param {number} to
  * @return {undefined}
  */
-export function sumInRange(from, to) {}
+export function sumInRange(from, to) {
+    if (typeof from !== 'number' || typeof to !== 'number') {
+        throw new TypeException('number');
+    }
+
+    if (from > to) {
+        const buff = from;
+        from = to;
+        to = buff;
+    }
+
+    let accumulator = 0;
+    for (let i = from; i <= to; i++) {
+        accumulator += i;
+    }
+    return accumulator;
+}
+
+log(sumInRange(50, 100));
 
 /**
  * 2. Вывести в консоль таблицу умножения на 7. 
@@ -30,7 +48,27 @@ export function sumInRange(from, to) {}
  * @param {number} num
  * @return {array}
  */
-export function getMultTable(num) {}
+export function getMultTable(num) {
+    if (typeof num !== 'number') {
+        throw new TypeException('number');
+    }
+
+    const accumulator = [];
+    let i;
+
+    while (i <= 9) {
+        accumulator.push(`${num} x ${i} = ${num * i}`);
+    }
+
+    return accumulator;
+}
+
+const mulArr = getMultTable(7);
+
+for(let i = 0; i < mulArr.length; i++) {
+    log(mulArr[i]);
+}
+
 
 /**
  * 3. Запросить у пользователя ввод числа N. 
@@ -45,5 +83,29 @@ export function getMultTable(num) {}
  * @param {number} to
  * @return {number}
  */
-export function averageOfOdd(from, to) {}
+export function averageOfOdd(from, to) {
+    if (typeof from !== 'number' || typeof to !== 'number') {
+        throw new TypeException('number');
+    }
 
+    if (from > to) {
+        const buff = from;
+        from = to;
+        to = buff;
+    }
+
+    let accumulator = 0;
+    let count = 0;
+
+    for (let i = from; i <= to; i++) {
+        if (i % 2 !== 0) {
+            accumulator += i;
+            count++;
+        }
+    }
+
+    return Number((accumulator/count).toFixed(3));
+}
+
+const n = askFor('Введите N для подсчета ср. арифм. всех нечетных от 1 до N');
+log(averageOfOdd(1, n));
