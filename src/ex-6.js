@@ -9,7 +9,7 @@ import {log} from './render';
  * @param {number} b
  * @return {number}
  */
-function diff(a, b) {}
+export function diff(a, b) {}
 
 /**
  * 2. Напишите функцию isWord, 
@@ -20,7 +20,7 @@ function diff(a, b) {}
  * @param {string} string
  * @return {boolean}
  */
-function isWord(string) {}
+export function isWord(string) {}
 
 /**
  * 3. Напишите функцию pow(a, x), 
@@ -30,6 +30,6 @@ function isWord(string) {}
  * @param {number} x
  * @return {number}
  */
-function pow(a, x) {}
+export function pow(a, x) {}
 
 

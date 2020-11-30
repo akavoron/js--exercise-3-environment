@@ -9,7 +9,7 @@ import {log} from './render';
  * @param {number} c
  * @return {boolean}
  */
-function isRightTriagle() {}
+export function isRightTriagle() {}
 
 /**
  * 2. Пользователь вводит число R. 
@@ -19,7 +19,7 @@ function isRightTriagle() {}
  * @param {number} r Радиус круга
  * @return {{circumference: number, area: number}}
  */
-function getParamsOfCircle(r) {}
+export function getParamsOfCircle(r) {}
 
 /**
  * Пользователь вводит числа a, b и c. 
@@ -31,6 +31,6 @@ function getParamsOfCircle(r) {}
  * @param {number} c
  * @return {object}
  */
-function getRootOfQuadraticEquation(a, b, c) {}
+export function getRootOfQuadraticEquation(a, b, c) {}
 
 

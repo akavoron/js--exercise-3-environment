@@ -11,8 +11,8 @@ import {log} from './render';
  * @param {string} string Введенное пользователем число
  * @return {boolean} 
  */
-function checkString(string) {}
+export function checkString(string) {}
 
-function isDate(string) {}
-function isEmail(string) {}
-function isTel(string) {}
+export function isDate(string) {}
+export function isEmail(string) {}
+export function isTel(string) {}

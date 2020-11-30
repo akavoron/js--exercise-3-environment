@@ -1,6 +1,6 @@
 import {log} from './render';
 
-function User(name, age, role){
+export function User(name, age, role){
     this.name = name ?? undefined;
     this.age = age ?? undefined;
     this.role = role ?? 'user';
@@ -13,7 +13,7 @@ function User(name, age, role){
  * 
  * @return {{name: 'John'}}
  */
-function createUser(name) {}
+export function createUser(name) {}
 
 /**
  * 1. Запросить у пользователя ввод числа. 
@@ -24,7 +24,7 @@ function createUser(name) {}
  * @param {object} user
  * @return {object} 
  */
-function setAge(age, user) {}
+export function setAge(age, user) {}
 
 /**
  * 2. Создать копию объекта user с именем admin. 
@@ -34,9 +34,9 @@ function setAge(age, user) {}
  * @param {object} user
  * @return {object}
  */
-function copyUser(user) {}
+export function copyUser(user) {}
 
-function setRole(role) {}
+export function setRole(role) {}
 
 /**
  * 3. Записать все значения полей объекта admin 
@@ -46,6 +46,6 @@ function setRole(role) {}
  * @param {object} user
  * @return {undefined}
  */
-function copyToVariables(user) {}
+export function copyToVariables(user) {}
 
 

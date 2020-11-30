@@ -24,27 +24,27 @@ import {log} from './render';
  * @param {string} elementId
  * @return {undefined}
  */
-function init(elemId) {}
+export function init(elemId) {}
 
 /**
  * input[text]'s onChange listener
  * 
  * @return {undefined}
  */
-function onChangeListener() {} 
+export function onChangeListener() {} 
 
 /**
  * form's onSubmit listener
  * 
  * @return {undefined}
  */
-function onFormSubmitListener() {}
+export function onFormSubmitListener() {}
 
 /**
  * Adds new paragraph
  * 
  * @return {undefined}
  */
-function addNewParagraph() {}
+export function addNewParagraph() {}
 
 

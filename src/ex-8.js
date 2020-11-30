@@ -7,7 +7,7 @@ import {log} from './render';
  * @param {string} dateString
  * @return {number}
  */
-function getDayOfWeek(dateString) {}
+export function getDayOfWeek(dateString) {}
 
 /**
  * 2. Написать программу, которая выводит в консоль 
@@ -15,7 +15,7 @@ function getDayOfWeek(dateString) {}
  * 
  * @return {undefined}
  */
-function getMinutes() {}
+export function getMinutes() {}
 
 /**
  * 3. В двух переменных хранятся даты рождения двух пользователей
@@ -26,7 +26,7 @@ function getMinutes() {}
  * @param {string} dateString2
  * @return {string}
  */
-function getLatest(dateString1, dateString2) {
+export function getLatest(dateString1, dateString2) {
     
 }
 

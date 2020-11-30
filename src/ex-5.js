@@ -6,7 +6,7 @@ import {log} from './render';
  * @param {number} count
  * @return {object}
  */
-function createArray(count) {}
+export function createArray(count) {}
 
 /**
  * 1. Выведите в консоль сумму всех элементов массива.
@@ -14,7 +14,7 @@ function createArray(count) {}
  * @param {object} arr
  * @return undefined
  */
-function sumInsideArray(arr) {}
+export function sumInsideArray(arr) {}
 
 /**
  * 2. Создайте новый массив на основе исходного, 
@@ -25,7 +25,7 @@ function sumInsideArray(arr) {}
  * @param {object} oldArr
  * @return {object}
  */
-function increaseArray2Times(oldArr) {}
+export function increaseArray2Times(oldArr) {}
 
 /**
  * 3. Найдите и выведите в консоль 
@@ -35,4 +35,4 @@ function increaseArray2Times(oldArr) {}
  * @param {object} arr
  * @return {undefined}
  */
-function greatestOfTwo(arr) {}
+export function greatestOfTwo(arr) {}
