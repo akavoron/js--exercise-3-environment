@@ -2,14 +2,14 @@ import {sumInRange, getMultTable, averageOfOdd} from './ex-3';
 import {TypeException, RangeException} from './exceptions';
 
 describe('The sumInRange function', () => {
-    it('works correctly with right param\'s type', () => {
+    it('should works correctly with right param\'s type', () => {
         expect(sumInRange(1, 5)).toBe(15);
         expect(sumInRange(5, 1)).toBe(15);
         expect(sumInRange(3, 7)).toBe(25);
         expect(sumInRange(7, 3)).toBe(25);
         expect(sumInRange(10, 13)).toBe(46);
     });
-    it("push a TypeException when the param type is wrong", () => {
+    it("should push a TypeException when the param type is wrong", () => {
         try {
             expect(sumInRange([1], 3)).toThrow(TypeException);
             expect(sumInRange(1, [3])).toThrow(TypeException);
@@ -24,7 +24,7 @@ describe('The sumInRange function', () => {
 });
 
 describe('The getMultTable function', () => {
-    it('works correctly with right param\'s type', () => {
+    it('should works correctly with right param\'s type', () => {
         const arr = [
             "5 x 1 = 5",
             "5 x 2 = 10",
@@ -39,7 +39,7 @@ describe('The getMultTable function', () => {
         expect(getMultTable(5)).toBe(arr);
         expect(getMultTable(10).length).toBe(9);
     });
-    it("push a TypeException when the param type is wrong", () => {
+    it("should push a TypeException when the param type is wrong", () => {
         try {
             expect(getMultTable(5)).toThrow(TypeException);
             expect(getMultTable('5')).toThrow(TypeException);
@@ -49,7 +49,8 @@ describe('The getMultTable function', () => {
             expect(getMultTable(false)).toThrow(TypeException);
         } catch (err) {}
     });
-    it('push a RangeException when the param is not in the range', () => {
+    it(`should push a RangeException when 
+        the param is not in the range`, () => {
         try {
             expect(getMultTable(0)).toThrow(RangeException);
             expect(getMultTable(-5)).toThrow(RangeException);
@@ -58,14 +59,14 @@ describe('The getMultTable function', () => {
 });
 
 describe('The averageOfOdd function', () => {
-    it('works correctly with right param\'s type', () => {
+    it('should works correctly with right param\'s type', () => {
         expect(averageOfOdd(1, 5)).toBe(3); // 1+3+5 = 9/3 = 3
         expect(averageOfOdd(5, 1)).toBe(3); // 1+3+5 = 9/3 = 3
         expect(averageOfOdd(4, 10)).toBe(7); // 5+7+9 = 21/3 = 7
         expect(averageOfOdd(-3, 5)).toBe(0.833); // (-3)+(-1)+0+1+3+5 = 5/6 = 0.833
         expect(averageOfOdd(-5, -10)).toBe(-7); // (-5)+(-7)+(-9) = -21/3 = -7
     });
-    it("push a TypeException when the param type is wrong", () => {
+    it("should push a TypeException when the param type is wrong", () => {
         try {
             expect(averageOfOdd([1], 5)).toThrow(TypeException);
             expect(averageOfOdd(1, [5])).toThrow(TypeException);

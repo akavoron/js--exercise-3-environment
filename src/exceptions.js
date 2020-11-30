@@ -1,5 +1,10 @@
 export function TypeException(rightType) {
-    this.message = `You should use a ${rightType} type in the param.`;
+    if (rightType) {
+        this.message = `You should use a ${rightType} type in the param.`;
+    }
+    else {
+        this.message = `You should use a correct type in the param.`;
+    }
     this.name = 'Type error';
 }
 
