@@ -1,4 +1,8 @@
-import {log} from './render';
+import {log, askFor} from './render';
+import {
+    TypeException, 
+    NumOfVariablesException
+} from './exceptions';
 
 /**
  * Конструктор персоны
@@ -8,9 +12,17 @@ import {log} from './render';
  * @param {string} role
  */
 
-export function Person(name, age, role){
-    this.name = name ?? undefined;
-    this.age = age ?? undefined;
+export function Person(name, age, role) {
+    if (
+        (typeof name !== 'string' && typeof name !== 'undefined')
+        || (typeof age !== 'number' && typeof age !== 'undefined')
+        || (typeof role !== 'string' && typeof role !== 'undefined')
+    ) {
+        throw new TypeException();
+    }
+
+    this.name = name;
+    this.age = age;
     this.role = role ?? 'user';
 
     /**
@@ -19,7 +31,15 @@ export function Person(name, age, role){
      * @param {number} age
      * @return {object} 
      */
-    this.setAge = function(age) {}
+    this.setAge = function(newAge) {
+        if (arguments.length !== 1) {
+            throw new NumOfVariablesException();
+        }
+        if (typeof newAge !== 'number') {
+            throw new TypeException('number');
+        }
+        this.age = newAge;
+    }
 
     /** 
      * Изменяет роль пользователя
@@ -27,7 +47,15 @@ export function Person(name, age, role){
      * @param {string} role
      * @return {object}
      */
-    this.setRole = function(role) {}
+    this.setRole = function(newRole) {
+        if (arguments.length !== 1) {
+            throw new NumOfVariablesException();
+        }
+        if (typeof newRole !== 'number') {
+            throw new TypeException('number');
+        }
+        this.role = newRole;
+    }
 }
 
 /**
@@ -42,7 +70,7 @@ const user = new Person('John');
  * Записать введенное значение в поле 
  * age объекта user.
  */
-let userAge = +askFor('Введите возраст пользователя');
+const userAge = +askFor('Введите возраст пользователя');
 user.setAge(userAge);
 
 /**
@@ -58,7 +86,11 @@ user.setAge(userAge);
  * @return {object}
  */
 export function copyPerson(person) {
-    return Object.assign({}, person);
+    if (! (person instanceof Person) ) {
+        throw new TypeException();
+    }
+
+    return { ...person };
 }
 
 const admin = copyPerson(user);

@@ -1,5 +1,9 @@
 import {sumInRange, getMultTable, averageOfOdd} from './ex-3';
-import {TypeException, RangeException} from './exceptions';
+import {
+    TypeException, 
+    RangeException,
+    NumOfVariablesException
+} from './exceptions';
 
 describe('The sumInRange function', () => {
     it('should works correctly with right param\'s type', () => {
@@ -9,7 +13,7 @@ describe('The sumInRange function', () => {
         expect(sumInRange(7, 3)).toBe(25);
         expect(sumInRange(10, 13)).toBe(46);
     });
-    it("should push a TypeException when the param type is wrong", () => {
+    it("should push a TypeException when the param's type is wrong", () => {
         try {
             expect(sumInRange([1], 3)).toThrow(TypeException);
             expect(sumInRange(1, [3])).toThrow(TypeException);
@@ -19,6 +23,14 @@ describe('The sumInRange function', () => {
             expect(sumInRange(1, undefined)).toThrow(TypeException);
             expect(sumInRange(true, 3)).toThrow(TypeException);
             expect(sumInRange(1, false)).toThrow(TypeException);
+        } catch (err) {}
+    });
+    it(`should push a NumOfVariablesException 
+        when wrong num of params`, () => {
+        try {
+            expect(sumInRange()).toThrow(NumOfVariablesException);
+            expect(sumInRange(1)).toThrow(NumOfVariablesException);
+            expect(sumInRange(1, 5, 10)).toThrow(NumOfVariablesException);
         } catch (err) {}
     });
 });
@@ -39,7 +51,7 @@ describe('The getMultTable function', () => {
         expect(getMultTable(5)).toBe(arr);
         expect(getMultTable(10).length).toBe(9);
     });
-    it("should push a TypeException when the param type is wrong", () => {
+    it("should push a TypeException when the param's type is wrong", () => {
         try {
             expect(getMultTable(5)).toThrow(TypeException);
             expect(getMultTable('5')).toThrow(TypeException);
@@ -56,6 +68,13 @@ describe('The getMultTable function', () => {
             expect(getMultTable(-5)).toThrow(RangeException);
         } catch (err) {}
     });
+    it(`should push a NumOfVariablesException 
+        when wrong num of params`, () => {
+        try {
+            expect(getMultTable()).toThrow(NumOfVariablesException);
+            expect(getMultTable(5, 10)).toThrow(NumOfVariablesException);
+        } catch (err) {}
+    });
 });
 
 describe('The averageOfOdd function', () => {
@@ -66,7 +85,7 @@ describe('The averageOfOdd function', () => {
         expect(averageOfOdd(-3, 5)).toBe(0.833); // (-3)+(-1)+0+1+3+5 = 5/6 = 0.833
         expect(averageOfOdd(-5, -10)).toBe(-7); // (-5)+(-7)+(-9) = -21/3 = -7
     });
-    it("should push a TypeException when the param type is wrong", () => {
+    it("should push a TypeException when the param's type is wrong", () => {
         try {
             expect(averageOfOdd([1], 5)).toThrow(TypeException);
             expect(averageOfOdd(1, [5])).toThrow(TypeException);
@@ -76,6 +95,13 @@ describe('The averageOfOdd function', () => {
             expect(averageOfOdd(1, undefined)).toThrow(TypeException);
             expect(averageOfOdd(true, 5)).toThrow(TypeException);
             expect(averageOfOdd(1, false)).toThrow(TypeException);
+        } catch (err) {}
+    });
+    it(`should push a NumOfVariablesException 
+        when wrong num of params`, () => {
+        try {
+            expect(averageOfOdd()).toThrow(NumOfVariablesException);
+            expect(averageOfOdd(1, 5, 10)).toThrow(NumOfVariablesException);
         } catch (err) {}
     });
 });

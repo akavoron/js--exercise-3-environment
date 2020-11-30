@@ -15,5 +15,10 @@ export function ParamLengthException() {
 
 export function RangeException() {
     this.message = `One of the params is not in the range`;
-    this.name = 'Param length error';
+    this.name = 'Params range error';
+}
+
+export function NumOfVariablesException() {
+    this.message = `You are missing some variables`;
+    this.name = 'Wrong number of variables';
 }

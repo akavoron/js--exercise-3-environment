@@ -1,5 +1,8 @@
 import {log, askFor} from './render';
-import {TypeException, RangeException} from './exceptions';
+import {
+    TypeException, 
+    NumOfVariablesException
+} from './exceptions';
 
 
 /**
@@ -15,6 +18,9 @@ import {TypeException, RangeException} from './exceptions';
  * @return {undefined}
  */
 export function sumInRange(from, to) {
+    if (arguments.length !== 2) {
+        throw new NumOfVariablesException();
+    }
     if (typeof from !== 'number' || typeof to !== 'number') {
         throw new TypeException('number');
     }
@@ -49,6 +55,9 @@ log(sumInRange(50, 100));
  * @return {array}
  */
 export function getMultTable(num) {
+    if (arguments.length !== 1) {
+        throw new NumOfVariablesException();
+    }
     if (typeof num !== 'number') {
         throw new TypeException('number');
     }
@@ -84,6 +93,9 @@ for(let i = 0; i < mulArr.length; i++) {
  * @return {number}
  */
 export function averageOfOdd(from, to) {
+    if (arguments.length !== 2) {
+        throw new NumOfVariablesException();
+    }
     if (typeof from !== 'number' || typeof to !== 'number') {
         throw new TypeException('number');
     }

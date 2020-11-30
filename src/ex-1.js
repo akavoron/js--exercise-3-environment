@@ -1,5 +1,10 @@
 import {log} from './render';
-import {TypeException, ParamLengthException} from './exceptions';
+
+import {
+    TypeException, 
+    ParamLengthException, 
+    NumOfVariablesException
+} from './exceptions';
 
 
 /**
@@ -17,6 +22,9 @@ import {TypeException, ParamLengthException} from './exceptions';
  * @return {number}
  */
 export function mul(a, b) {
+    if (arguments.length !== 2) {
+        throw new NumOfVariablesException();
+    }
     if (typeof a !== 'number' || typeof b !== 'number') {
         throw new TypeException('number');
     }
@@ -35,6 +43,9 @@ log(mul(2,3));
  * @return {number}
  */
 export function sum(a, b) {
+    if (arguments.length !== 2) {
+        throw new NumOfVariablesException();
+    }
     if (typeof a !== 'number' || typeof b !== 'number') {
         throw new TypeException('number');
     }
@@ -60,6 +71,9 @@ log(sum(2,3));
  * @return {number}
  */
 export function getStringsLength(firstString, secondString) {
+    if (arguments.length !== 2) {
+        throw new NumOfVariablesException();
+    }
     if (typeof firstString !== 'string' || typeof secondString !== 'string') {
         throw new TypeException('string');
     }
@@ -84,6 +98,9 @@ log(getStringsLength('some', 'text here'));
  * @return {number}
  */
 export function getSumOfInlineDigits(number) {
+    if (arguments.length !== 1) {
+        throw new NumOfVariablesException();
+    }
     if (typeof number !== 'number') {
         throw new TypeException('number');
     }

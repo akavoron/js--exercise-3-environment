@@ -1,5 +1,5 @@
 import {Person, copyPerson} from './ex-4';
-import {TypeException} from './exceptions';
+import {TypeException, NumOfVariablesException} from './exceptions';
 
 describe('Person object', () => {
     const person = new Person('Bob', 23, 'user');
@@ -11,7 +11,7 @@ describe('Person object', () => {
         expect(Object.keys(person).length).toBe(3);        
     });
 
-    it("should push a TypeException when the param type is wrong", () => {
+    it("should push a TypeException when the param's type is wrong", () => {
         try {
             expect(new Person('Bob', '23', 'user')).toThrow(TypeException);
             expect(new Person(11, 23, 'user')).toThrow(TypeException);
@@ -37,7 +37,7 @@ describe('Person object', () => {
             expect(person.age === 32).toBe(true);
         });
 
-        it("should push a TypeException when the param type is wrong", () => {
+        it("should push a TypeException when the param's type is wrong", () => {
             try {
                 expect(person.setAge('32')).toThrow(TypeException);
                 expect(person.setAge([32])).toThrow(TypeException);
@@ -45,6 +45,14 @@ describe('Person object', () => {
                 expect(person.setAge(false)).toThrow(TypeException);
                 expect(person.setAge(null)).toThrow(TypeException);
                 expect(person.setAge(undefined)).toThrow(TypeException);
+            } catch (err) {}
+        });
+
+        it(`should push a NumOfVariablesException 
+            when wrong num of params`, () => {
+            try {
+                expect(person.setAge()).toThrow(NumOfVariablesException);
+                expect(person.setAge(22, 32)).toThrow(NumOfVariablesException);
             } catch (err) {}
         });
     });
@@ -55,7 +63,7 @@ describe('Person object', () => {
             expect(person.role === 'admin').toBe(true);
         });
 
-        it("should push a TypeException when the param type is wrong", () => {
+        it("should push a TypeException when the param's type is wrong", () => {
             try {
                 expect(person.setRole(11)).toThrow(TypeException);
                 expect(person.setRole(['admin'])).toThrow(TypeException);
@@ -63,6 +71,15 @@ describe('Person object', () => {
                 expect(person.setRole(false)).toThrow(TypeException);
                 expect(person.setRole(null)).toThrow(TypeException);
                 expect(person.setRole(undefined)).toThrow(TypeException);
+            } catch (err) {}
+        });
+
+        it(`should push a NumOfVariablesException 
+            when wrong num of params`, () => {
+            try {
+                expect(person.setRole()).toThrow(NumOfVariablesException);
+                expect(person.setRole('user', 'admin'))
+                    .toThrow(NumOfVariablesException);
             } catch (err) {}
         });
     });
@@ -88,7 +105,7 @@ describe('Function copyPerson', () => {
         expect(flag).toBe(true);
     });
 
-    it("should push a TypeException when the param type is wrong", () => {
+    it("should push a TypeException when the param's type is wrong", () => {
         try {
             expect(copyPerson({'name': 'Bob', 'age': 23, 'role': 'user'}))
                 .toThrow(TypeException);

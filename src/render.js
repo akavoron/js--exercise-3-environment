@@ -8,6 +8,6 @@ export function log(...data) {
     console.log.apply({}, data);
 }
 
-export function askFor(message, default) {
-    return prompt(message, default);
+export function askFor(message, def) {
+    return prompt(message, def);
 }

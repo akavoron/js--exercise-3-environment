@@ -1,5 +1,10 @@
 import {log} from './render';
-import {TypeException, RangeException} from './exceptions';
+
+import {
+    TypeException, 
+    RangeException, 
+    NumOfVariablesException
+} from './exceptions';
 
 /**
  * 1. В переменных a и b хранятся числа.
@@ -14,6 +19,9 @@ import {TypeException, RangeException} from './exceptions';
  * @return {number}
  */
 export function getBiggest(a, b) {
+    if (arguments.length !== 2) {
+        throw new NumOfVariablesException();
+    }
     if (typeof a !== 'number' || typeof b !== 'number') {
         throw new TypeException('number');
     }
@@ -39,6 +47,9 @@ log(`Наибольшее число между ${a} и ${b} это ${getBiggest
  * @return {string}
  */
 export function getMonthText(mNum) {
+    if (arguments.length !== 1) {
+        throw new NumOfVariablesException();
+    }
     if (typeof mNum !== 'number') {
         throw new TypeException('number');
     }
@@ -54,6 +65,9 @@ export function getMonthText(mNum) {
 
 // другой - более длинный вариант решения
 export function getMonthText2(mNum) {
+    if (arguments.length !== 1) {
+        throw new NumOfVariablesException();
+    }
     if (typeof mNum !== 'number') {
         throw new TypeException('number');
     }
@@ -123,12 +137,15 @@ log(`${monthNumber} – ${getMonthText(monthNumber)}`);
  * @param {boolean}
  */
 export function isFitCircleToSquare(circle, square) {
-    if (typeof mNum !== 'number') {
+    if (arguments.length !== 2) {
+        throw new NumOfVariablesException();
+    }
+    if (typeof circle !== 'number' || typeof square !== 'number') {
         throw new TypeException('number');
     }
 
     // D = 2 * √(S/Pi)
-    const circleD = 2 * Math.sqrt()
+    const circleD = 2 * Math.sqrt(circle)
 
     // a = √S
     const squareA = Math.sqrt(square);
