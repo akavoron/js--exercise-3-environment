@@ -14,7 +14,11 @@ import {TypeException, RangeException} from './exceptions';
  * @return {number}
  */
 export function getBiggest(a, b) {
+    if (typeof a !== 'number' || typeof b !== 'number') {
+        throw new TypeException('number');
+    }
 
+    return a > b ? a : b;
 }
 
 const a = 10;
@@ -31,15 +35,77 @@ log(`Наибольшее число между ${a} и ${b} это ${getBiggest
 /**
  * Выводит текстовое представление месяца
  * 
- * @param {number} monthNum
+ * @param {number} number
  * @return {string}
  */
-export function getMonthText(monthNum) {
+export function getMonthText(mNum) {
+    if (typeof mNum !== 'number') {
+        throw new TypeException('number');
+    }
+    if (mNum < 1 || mNum > 12) {
+        throw new RangeException();
+    }
 
+    const namesArr = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 
+    'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
+
+    return namesArr[mNum]
 }
 
-const monthNum = 7;
-log(`${monthNum} – ${getMonthText(monthNum)}`);
+// другой - более длинный вариант решения
+export function getMonthText2(mNum) {
+    if (typeof mNum !== 'number') {
+        throw new TypeException('number');
+    }
+    
+    let mName;
+
+    switch (mNum) {
+        case 1:
+            mName = 'январь';
+            break;
+        case 2:
+            mName = 'февраль';
+            break;
+        case 3:
+            mName = 'март';
+            break;
+        case 4:
+            mName = 'апрель';
+            break;
+        case 5:
+            mName = 'май';
+            break;
+        case 6:
+            mName = 'июнь';
+            break;
+        case 7:
+            mName = 'июль';
+            break;
+        case 8:
+            mName = 'август';
+            break;
+        case 9:
+            mName = 'сентябрь';
+            break;
+        case 10:
+            mName = 'октябрь';
+            break;
+        case 11:
+            mName = 'ноябрь';
+            break;
+        case 12:
+            mName = 'декабрь';
+            break;
+        default:
+            throw new RangeException();
+    }
+    return mName;
+}
+
+const monthNumber = 7;
+log(`${monthNumber} – ${getMonthText(monthNumber)}`);
+// log(`${monthNumber} – ${getMonthText2(monthNumber)}`);
 
 
 /**
@@ -57,14 +123,17 @@ log(`${monthNum} – ${getMonthText(monthNum)}`);
  * @param {boolean}
  */
 export function isFitCircleToSquare(circle, square) {
-    /*
-    Circle:
-    D = 2 * √(S/Pi) 
+    if (typeof mNum !== 'number') {
+        throw new TypeException('number');
+    }
 
-    Square:
-    a = √S
-    */
-    
+    // D = 2 * √(S/Pi)
+    const circleD = 2 * Math.sqrt()
+
+    // a = √S
+    const squareA = Math.sqrt(square);
+
+    return circleD > squareA;
 }
 
 const circle = 10;
