@@ -1,4 +1,8 @@
 import {log} from './render';
+import {
+    TypeException, 
+    NumOfVariablesException
+} from './exceptions';
 
 /**
  * 1. Напишите функцию diff, 
@@ -9,7 +13,16 @@ import {log} from './render';
  * @param {number} b
  * @return {number}
  */
-export function diff(a, b) {}
+export function diff(a, b) {
+    if (arguments.length !== 2) {
+        throw new NumOfVariablesException();
+    }
+    if (typeof a !== 'number' || typeof b !== 'number') {
+        throw new TypeException('number');
+    }
+
+    return (a > b) ? a - b : b - a;
+}
 
 /**
  * 2. Напишите функцию isWord, 
@@ -20,7 +33,16 @@ export function diff(a, b) {}
  * @param {string} string
  * @return {boolean}
  */
-export function isWord(string) {}
+export function isWord(string) {
+    if (arguments.length !== 1) {
+        throw new NumOfVariablesException();
+    }
+    if (typeof string !== 'string') {
+        throw new TypeException('string');
+    }
+
+    return string.trim().split(' ') === 1;
+}
 
 /**
  * 3. Напишите функцию pow(a, x), 
@@ -30,6 +52,16 @@ export function isWord(string) {}
  * @param {number} x
  * @return {number}
  */
-export function pow(a, x) {}
+export function pow(a, x) {
+    if (arguments.length !== 2) {
+        throw new NumOfVariablesException();
+    }
+    if (typeof a !== 'number' || typeof x !== 'number') {
+        throw new TypeException('number');
+    }
+
+    return a**x;
+}
+
 
 

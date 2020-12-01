@@ -17,6 +17,15 @@ import {
  * @return {[]}
  */
 export function createArray(min, max, count) {
+    if (arguments.length !== 3) {
+        throw new NumOfVariablesException();
+    }
+    if (typeof min !== 'number' 
+        || typeof max !== 'number' 
+        || typeof count !== 'number') {
+        throw new TypeException('number');
+    }
+
     let arr = [];
 
     for (let i; i < count; i++) {
@@ -24,6 +33,10 @@ export function createArray(min, max, count) {
     }
     return arr;
 }
+
+let numArr = createArray(-5, 5, 10);
+log(`Создали массив со случайными значениями: ${numArr}`);
+
 
 /**
  * 1. Выведите в консоль сумму всех элементов массива.
@@ -35,7 +48,29 @@ export function createArray(min, max, count) {
  * @param {[]} arr
  * @return {number}
  */
-export function sumInsideArray(arr) {}
+export function getSumInsideArray(arr) {
+    if (arguments.length !== 1) {
+        throw new NumOfVariablesException();
+    }
+    if (!Array.isArray(arr)) {
+        throw new TypeException('[]');
+    }
+
+    let accumulator = 0;
+    
+    for (let i = 0; i < arr.length; i++) {
+        if (typeof arr[i] !== 'number') {
+            throw new TypeException('[]');
+        }
+        
+        accumulator += arr[i];
+    }
+
+    return accumulator;
+}
+
+log(`Сумма всех чисел в массиве: ${getSumInsideArray(numArr)}`);
+
 
 /**
  * 2. Создайте новый массив на основе исходного, 
@@ -50,7 +85,29 @@ export function sumInsideArray(arr) {}
  * @param {[]} oldArr
  * @return {[]}
  */
-export function increaseArray2Times(oldArr) {}
+export function increaseArray2Times(oldArr) {
+    if (arguments.length !== 1) {
+        throw new NumOfVariablesException();
+    }
+    if (!Array.isArray(oldArr)) {
+        throw new TypeException('[]');
+    }
+
+    let newArr;
+    
+    for (let i = 0; i < oldArr.length; i++) {
+        if (typeof oldArr[i] !== 'number') {
+            throw new TypeException('[]');
+        }
+
+        newArr.push(oldArr[i] * 2);
+    }
+
+    return newArr;
+}
+
+log(`Увеличили значения массива в 2 раза: ${increaseArray2Times(numArr)}`);
+
 
 /**
  * 3. Найдите и выведите в консоль 
@@ -64,7 +121,30 @@ export function increaseArray2Times(oldArr) {}
  * @param {[]} arr
  * @return {number}
  */
-export function greatest(arr) {}
+export function getGreatest(arr) {
+    if (arguments.length !== 1) {
+        throw new NumOfVariablesException();
+    }
+    if (!Array.isArray(arr)) {
+        throw new TypeException('[]');
+    }
+
+    let greatest;
+    
+    for (let i = 0; i < arr.length; i++) {
+        if (typeof arr[i] !== 'number') {
+            throw new TypeException('[]');
+        }
+        if (typeof greatest === 'undefined' || arr[i] > greatest) {
+            greatest = arr[i];
+        }
+    }
+
+    return greatest;
+}
+
+log(`Наибольшее число в исходном массиве: ${getGreatest(numArr)}`);
+
 
 /** 
  * Возвращает наименьшее число в массиве 
@@ -72,4 +152,26 @@ export function greatest(arr) {}
  * @param {[]} arr
  * @return {number}
  */
-export function smallest(arr) {}
+export function getSmallest(arr) {
+    if (arguments.length !== 1) {
+        throw new NumOfVariablesException();
+    }
+    if (!Array.isArray(arr)) {
+        throw new TypeException('[]');
+    }
+
+    let smallest;
+    
+    for (let i = 0; i < arr.length; i++) {
+        if (typeof arr[i] !== 'number') {
+            throw new TypeException('[]');
+        }
+        if (typeof smallest === 'undefined' || arr[i] < smallest) {
+            smallest = arr[i];
+        }
+    }
+
+    return smallest;
+}
+
+log(`Наименьшее число в исходном массиве: ${getSmallest(numArr)}`);
