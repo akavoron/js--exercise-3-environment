@@ -1,4 +1,4 @@
-import {log, askFor} from './render';
+import {log} from './render';
 import {
     TypeException, 
     NumOfVariablesException

@@ -1,4 +1,3 @@
-import {log} from './render';
 import {
     TypeException, 
     NumOfVariablesException
