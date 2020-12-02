@@ -1,4 +1,4 @@
-import { TypeException, NumOfVariablesException } from './exceptions.js';
+import { TypeException, NumOfVariablesException } from './exceptions';
 
 /**
  * Сверстать страницу и подключить к ней файл со скриптом. 

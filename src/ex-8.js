@@ -3,7 +3,7 @@ import {
     TypeException, 
     NumOfVariablesException, 
     ParamFormatException
-} from './exceptions.js';
+} from './exceptions';
 
 
 /**

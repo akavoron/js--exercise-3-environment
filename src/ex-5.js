@@ -26,7 +26,7 @@ export function createArray(min, max, count) {
         throw new TypeException('number');
     }
 
-    let arr = [];
+    const arr = [];
 
     for (let i; i < count; i++) {
         arr.push( (max - min) * Math.random() + min );
@@ -34,7 +34,7 @@ export function createArray(min, max, count) {
     return arr;
 }
 
-let numArr = createArray(-5, 5, 10);
+const numArr = createArray(-5, 5, 10);
 log(`Создали массив со случайными значениями: ${numArr}`);
 
 

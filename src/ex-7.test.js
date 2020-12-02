@@ -40,7 +40,7 @@ describe('Function init', () => {
 });
 
 describe('Function addNewParagraph', () => {
-    let buff = {};
+    const buff = {};
 
     beforeEach(() => {
         buff.contEl = document.querySelector('.content').cloneNode(true);

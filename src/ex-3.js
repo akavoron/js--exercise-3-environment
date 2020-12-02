@@ -25,14 +25,19 @@ export function sumInRange(from, to) {
         throw new TypeException('number');
     }
 
+    let fromVariable;
+    let toVariable;
+
     if (from > to) {
-        const buff = from;
-        from = to;
-        to = buff;
+        fromVariable = to;
+        toVariable = from;
+    } else {
+        fromVariable = from;
+        toVariable = to;
     }
 
     let accumulator = 0;
-    for (let i = from; i <= to; i++) {
+    for (let i = fromVariable; i <= toVariable; i++) {
         accumulator += i;
     }
     return accumulator;
@@ -100,19 +105,24 @@ export function averageOfOdd(from, to) {
         throw new TypeException('number');
     }
 
+    let fromVariable;
+    let toVariable;
+
     if (from > to) {
-        const buff = from;
-        from = to;
-        to = buff;
+        fromVariable = to;
+        toVariable = from;
+    } else {
+        fromVariable = from;
+        toVariable = to;
     }
 
     let accumulator = 0;
     let count = 0;
 
-    for (let i = from; i <= to; i++) {
+    for (let i = fromVariable; i <= toVariable; i++) {
         if (i % 2 !== 0) {
             accumulator += i;
-            count++;
+            count += 1;
         }
     }
 

@@ -1,4 +1,4 @@
-import {log} from './render';
+import {log, askFor} from './render';
 
 import {
     TypeException, 
@@ -118,5 +118,5 @@ export function getSumOfInlineDigits(number) {
     return accumulator;
 }
 
-const num = +prompt('Type a number with 3 digits:')
+const num = +askFor('Type a number with 3 digits:')
 log(getSumOfInlineDigits(num));
