@@ -12,7 +12,7 @@ module.exports = {
   rules: {
     "import/prefer-default-export": "off",
     "max-len": ["error", { code: 100, ignoreComments: true }],
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-plusplus": ["error", { allowForLoopAfterthoughts: true }],
   },
   plugins: ["jest"],
 };

@@ -1,7 +1,6 @@
-
 /**
- * Пользователь вводит текстовую строку. 
- * 
+ * Пользователь вводит текстовую строку.
+ *
  * Определить с помощью регулярного выражения, является ли введённая строка:
  * 1. Датой.
  * 2. Адресом электронной почты.
@@ -10,36 +9,38 @@
 
 /**
  * Проверяет, является ли строка датой.
- * 
+ *
  * @param {string} string
- * @return {boolean} 
+ * @return {boolean}
  */
 
 export function isDate(string) {
-    const regexp = /(\d{1,2}[. /-]\d{1,2}[. /-]\d{2,4})|(\d{2,4}[. /-]\d{1,2}[. /-]\d{1,2})/;
-    return string.search(regexp) !== -1;
+  const regexp = /(\d{1,2}[. /-]\d{1,2}[. /-]\d{2,4})|(\d{2,4}[. /-]\d{1,2}[. /-]\d{1,2})/;
+  return string.search(regexp) !== -1;
 }
-
 
 /**
  * Проверяет, является ли строка email-адресом.
- * 
+ *
  * @param {string} string
- * @return {boolean} 
+ * @return {boolean}
  */
 
 export function isEmail(string) {
-    return string.search(/[\w\d-]*@[\w\d-]{2,}\.\w{2,}/) !== -1;
+  return string.search(/[\w\d-]*@[\w\d-]{2,}\.\w{2,}/) !== -1;
 }
-
 
 /**
  * Проверяет, является ли строка телефоном.
- * 
+ *
  * @param {string} string
- * @return {boolean} 
+ * @return {boolean}
  */
 
 export function isTel(string) {
-    return string.search(/^[+]?\d[\s -]?\(?\d{3}\)?[\s -]?\d{3}[\s -]?\d{2}[\s -]?\d{2}$/) !== -1;
+  return (
+    string.search(
+      /^[+]?\d[\s -]?\(?\d{3}\)?[\s -]?\d{3}[\s -]?\d{2}[\s -]?\d{2}$/
+    ) !== -1
+  );
 }
