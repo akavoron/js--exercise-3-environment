@@ -1,5 +1,6 @@
 import {sumInRange, getMultTable, averageOfOdd} from './ex-3';
 import {
+    errMsg,
     TypeException, 
     RangeException,
     NumOfVariablesException
@@ -23,7 +24,7 @@ describe('The sumInRange function', () => {
             expect(sumInRange(1, undefined)).toThrow(TypeException);
             expect(sumInRange(true, 3)).toThrow(TypeException);
             expect(sumInRange(1, false)).toThrow(TypeException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
     it(`should push a NumOfVariablesException 
         when wrong num of params`, () => {
@@ -31,7 +32,7 @@ describe('The sumInRange function', () => {
             expect(sumInRange()).toThrow(NumOfVariablesException);
             expect(sumInRange(1)).toThrow(NumOfVariablesException);
             expect(sumInRange(1, 5, 10)).toThrow(NumOfVariablesException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 });
 
@@ -59,21 +60,21 @@ describe('The getMultTable function', () => {
             expect(getMultTable(undefined)).toThrow(TypeException);
             expect(getMultTable(true)).toThrow(TypeException);
             expect(getMultTable(false)).toThrow(TypeException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
     it(`should push a RangeException when 
         the param is not in the range`, () => {
         try {
             expect(getMultTable(0)).toThrow(RangeException);
             expect(getMultTable(-5)).toThrow(RangeException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
     it(`should push a NumOfVariablesException 
         when wrong num of params`, () => {
         try {
             expect(getMultTable()).toThrow(NumOfVariablesException);
             expect(getMultTable(5, 10)).toThrow(NumOfVariablesException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 });
 
@@ -95,13 +96,13 @@ describe('The averageOfOdd function', () => {
             expect(averageOfOdd(1, undefined)).toThrow(TypeException);
             expect(averageOfOdd(true, 5)).toThrow(TypeException);
             expect(averageOfOdd(1, false)).toThrow(TypeException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
     it(`should push a NumOfVariablesException 
         when wrong num of params`, () => {
         try {
             expect(averageOfOdd()).toThrow(NumOfVariablesException);
             expect(averageOfOdd(1, 5, 10)).toThrow(NumOfVariablesException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 });

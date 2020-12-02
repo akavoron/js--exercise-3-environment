@@ -6,7 +6,7 @@ import {
     init
 } from './ex-7';
 
-import {TypeException, NumOfVariablesException} from './exceptions';
+import {errMsg, TypeException, NumOfVariablesException} from './exceptions';
 
 createElements();
 
@@ -69,7 +69,7 @@ describe('Function addNewParagraph', () => {
     it('has exactly 1 parameters', () => {
         try {
             expect(addNewParagraph('test')).toThrow(NumOfVariablesException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 
     it("should push a TypeException when the param's type is wrong", () => {
@@ -81,7 +81,7 @@ describe('Function addNewParagraph', () => {
             expect(addNewParagraph(true)).toThrow(TypeException);
             expect(addNewParagraph(null)).toThrow(TypeException);
             expect(addNewParagraph(undefined)).toThrow(TypeException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 
     afterEach(() => {
@@ -102,6 +102,6 @@ describe('Function clearUnnecessaryPar', () => {
             expect(clearUnnecessaryPar(true)).toThrow(TypeException);
             expect(clearUnnecessaryPar(null)).toThrow(TypeException);
             expect(clearUnnecessaryPar(undefined)).toThrow(TypeException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 });

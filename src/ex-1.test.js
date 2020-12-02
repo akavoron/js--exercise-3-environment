@@ -1,6 +1,7 @@
 import {sum, mul, getStringsLength, getSumOfInlineDigits} from './ex-1';
 
 import {
+    errMsg,
     TypeException, 
     ParamLengthException, 
     NumOfVariablesException
@@ -29,14 +30,14 @@ describe('The sum function', () => {
             expect(sum(null, 3)).toThrow(TypeException);
             expect(sum(true, 3)).toThrow(TypeException);
             expect(sum(2, false)).toThrow(TypeException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 
     it("should push a NumOfVariablesException when wrong num of params", () => {
         try {
             expect(sum(2)).toThrow(NumOfVariablesException);
             expect(sum(2, 3, 4)).toThrow(NumOfVariablesException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 });
 
@@ -63,14 +64,14 @@ describe('The mul function', () => {
             expect(mul(null, 3)).toThrow(TypeException);
             expect(mul(true, 3)).toThrow(TypeException);
             expect(mul(2, false)).toThrow(TypeException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 
     it("should push a NumOfVariablesException when wrong num of params", () => {
         try {
             expect(mul(2)).toThrow(NumOfVariablesException);
             expect(mul(2, 3, 4)).toThrow(NumOfVariablesException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 });
 
@@ -94,7 +95,7 @@ describe('The getStringsLength function', () => {
             expect(getStringsLength(null, 'test')).toThrow(TypeException);
             expect(getStringsLength(true, 'test')).toThrow(TypeException);
             expect(getStringsLength('test', false)).toThrow(TypeException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 
     it("should push a NumOfVariablesException when wrong num of params", () => {
@@ -102,7 +103,7 @@ describe('The getStringsLength function', () => {
             expect(getStringsLength('one')).toThrow(NumOfVariablesException);
             expect(getStringsLength('one', 'two', 'three'))
                 .toThrow(NumOfVariablesException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 });
 
@@ -123,7 +124,7 @@ describe('The getSumOfInlineDigits function', () => {
             expect(getSumOfInlineDigits(true)).toThrow(TypeException);
             expect(getSumOfInlineDigits(false)).toThrow(TypeException);
             expect(getSumOfInlineDigits([1,2,3])).toThrow(TypeException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 
     it(`should push a ParamLengthException 
@@ -133,7 +134,7 @@ describe('The getSumOfInlineDigits function', () => {
             expect(getSumOfInlineDigits('12')).toThrow(ParamLengthException);
             expect(getSumOfInlineDigits('1234')).toThrow(ParamLengthException);
             expect(getSumOfInlineDigits('12345')).toThrow(ParamLengthException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 
     it("should push a NumOfVariablesException when wrong num of params", () => {
@@ -141,6 +142,6 @@ describe('The getSumOfInlineDigits function', () => {
             expect(getSumOfInlineDigits()).toThrow(NumOfVariablesException);
             expect(getSumOfInlineDigits('1', '2'))
                 .toThrow(NumOfVariablesException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 });

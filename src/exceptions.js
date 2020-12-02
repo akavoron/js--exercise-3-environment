@@ -1,3 +1,5 @@
+import {log} from './render';
+
 export function TypeException(rightType) {
     if (rightType) {
         this.message = `You should use a ${rightType} type in the param.`;
@@ -26,4 +28,8 @@ export function NumOfVariablesException() {
 export function ParamFormatException() {
     this.message = `One of the params has the wrong format`;
     this.name = 'Wrong format of params';
+}
+
+export function errMsg(e) {
+    log(e.name, e.message);
 }

@@ -1,5 +1,5 @@
 import {Person, copyPerson} from './ex-4';
-import {TypeException, NumOfVariablesException} from './exceptions';
+import {errMsg, TypeException, NumOfVariablesException} from './exceptions';
 
 describe('Person object', () => {
     const person = new Person('Bob', 23, 'user');
@@ -28,7 +28,7 @@ describe('Person object', () => {
             expect(new Person(null, 23, 'user').toThrow(TypeException));
             expect(new Person('Bob', undefined, 'user').toThrow(TypeException));
             expect(new Person('Bob', 23, null).toThrow(TypeException));
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 
     describe('method setAge', () => {
@@ -45,7 +45,7 @@ describe('Person object', () => {
                 expect(person.setAge(false)).toThrow(TypeException);
                 expect(person.setAge(null)).toThrow(TypeException);
                 expect(person.setAge(undefined)).toThrow(TypeException);
-            } catch (err) {}
+            } catch (err) { errMsg(err); }
         });
 
         it(`should push a NumOfVariablesException 
@@ -53,7 +53,7 @@ describe('Person object', () => {
             try {
                 expect(person.setAge()).toThrow(NumOfVariablesException);
                 expect(person.setAge(22, 32)).toThrow(NumOfVariablesException);
-            } catch (err) {}
+            } catch (err) { errMsg(err); }
         });
     });
 
@@ -71,7 +71,7 @@ describe('Person object', () => {
                 expect(person.setRole(false)).toThrow(TypeException);
                 expect(person.setRole(null)).toThrow(TypeException);
                 expect(person.setRole(undefined)).toThrow(TypeException);
-            } catch (err) {}
+            } catch (err) { errMsg(err); }
         });
 
         it(`should push a NumOfVariablesException 
@@ -80,7 +80,7 @@ describe('Person object', () => {
                 expect(person.setRole()).toThrow(NumOfVariablesException);
                 expect(person.setRole('user', 'admin'))
                     .toThrow(NumOfVariablesException);
-            } catch (err) {}
+            } catch (err) { errMsg(err); }
         });
     });
 });
@@ -116,6 +116,6 @@ describe('Function copyPerson', () => {
             expect(copyPerson(true)).toThrow(TypeException);
             expect(copyPerson(false)).toThrow(TypeException);
             expect(copyPerson(undefined)).toThrow(TypeException);
-        } catch (err) {}
+        } catch (err) { errMsg(err); }
     });
 })

@@ -1,4 +1,4 @@
-import {log} from './render';
+import {log, askFor} from './render';
 import {
     TypeException, 
     NumOfVariablesException, 
@@ -7,13 +7,13 @@ import {
 
 
 /**
- * Проверяет строку на формат "dd.mm.yyyy"
+ * Проверяет строку c датой на формат dd.mm.yyyy
  * 
  * @param {string} dateString
  * @return {undefined} 
  */
 
-function checkFormatDate(dateString) {
+export function checkFormatDate(dateString) {
     if (arguments.length !== 1) {
         throw new NumOfVariablesException();
     }
@@ -36,11 +36,11 @@ function checkFormatDate(dateString) {
 /**
  * Получает дату по строке
  * 
- * @param {string} dateString 
+ * @param {string} dateString
  * @return {undefined}
  */
 
-function getDateFromString(dateString) {
+export function getDateFromString(dateString) {
     if (arguments.length !== 1) {
         throw new NumOfVariablesException();
     }
@@ -79,7 +79,8 @@ export function getDayOfWeek(dateString) {
     return day === 0 ? 7 : day;
 }
 
-log( ['пн','вт','ср','чт','пт','сб','вс'][getDayOfWeek('25-05-2020')-1] );
+const userDate = askFor('Enter the date in the next format: DD.MM.YYYY');
+log( ['пн','вт','ср','чт','пт','сб','вс'][getDayOfWeek(userDate)-1] );
 
 
 /**
@@ -94,12 +95,17 @@ export function getMinutes() {
 
     return (startOfTheDay - now)/1000/60;
 }
+log(getMinutes());
 
 
 /**
  * 3. В двух переменных хранятся даты рождения двух пользователей
  * в формате ДД.ММ.ГГГГ. 
  * Написать программу, которая определяет более молодого пользователя.
+ */
+
+/**
+ * Выводит более позднюю дату
  * 
  * @param {string} dateString1
  * @param {string} dateString2
