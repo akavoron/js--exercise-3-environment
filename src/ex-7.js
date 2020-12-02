@@ -1,8 +1,4 @@
-import {log, askFor} from './render';
-import {
-    TypeException, 
-    NumOfVariablesException
-} from './exceptions';
+import { TypeException, NumOfVariablesException } from './exceptions.js';
 
 /**
  * Сверстать страницу и подключить к ней файл со скриптом. 
@@ -22,10 +18,36 @@ import {
  * первый из них удаляется.
  */
 
+/**
+ * Создает элементы на странице
+ * 
+ * @return {undefined}
+ */
+
+export function createElements() {
+    document.body.innerHTML = `
+        <h1>Exercise 7</h1>
+        <form action="">
+            <input type="text" value="" placeholder="Type text here...">
+            <button hidden>Add</button>
+        </form>
+        <div class="content">
+            <p>Some text here</p>
+            <p>Just another text</p>
+            <p>Lorem Ipsum</p>
+        </div>
+    `;
+}
+createElements();
+
 const contEl = document.querySelector('.content');
 const formEl = document.querySelector('form');
 const inpTextEl = document.querySelector('input[type=text]');
 const btnEl = document.querySelector('button');
+
+export const config = {
+    'num' : 5
+};
 
 /**
  * Adds new paragraph
@@ -33,6 +55,13 @@ const btnEl = document.querySelector('button');
  * @return {undefined}
  */
 export function addNewParagraph(text) {
+    if (arguments.length !== 1) {
+        throw new NumOfVariablesException();
+    }
+    if (typeof text !== 'string') {
+        throw new TypeException('string');  
+    }
+
     const newP = document.createElement('p');
     newP.innerText = text;
     contEl.appendChild(newP);
@@ -44,8 +73,12 @@ export function addNewParagraph(text) {
  * @return {undefined}
  */
 export function clearUnnecessaryPar(num = 5) {
-    if (document.querySelectorAll('.content p') > num) {
-        document.querySelectorAll('.content p:last-child').remove();
+    if (typeof num !== 'number') {
+        throw new TypeException('number');
+    }
+
+    if (document.querySelectorAll('.content p').length > num) {
+        document.querySelector('.content p').remove();
     }
 }
 
@@ -55,19 +88,21 @@ export function clearUnnecessaryPar(num = 5) {
  * @return {undefined}
  */
 export function init() {
-    formEl.addEventListener('submit', () => {
+    formEl.addEventListener('submit', (e) => {
+        e.preventDefault();
+
         addNewParagraph(inpTextEl.value);
-        clearUnnecessaryPar(5);
+        clearUnnecessaryPar(config.num);
 
         inpTextEl.value = '';
         btnEl.hidden = true;
     });
 
-    inpTextEl.addEventListener('change', () => {
-        btnEl.hidden = inpTextEl.value !== '';
+    inpTextEl.addEventListener('keyup', () => {
+        btnEl.hidden = inpTextEl.value === '';
     });
 }
 
-
+init();
 
 
