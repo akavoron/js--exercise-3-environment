@@ -22,3 +22,8 @@ export function NumOfVariablesException() {
     this.message = `You are missing some variables`;
     this.name = 'Wrong number of variables';
 }
+
+export function ParamFormatException() {
+    this.message = `One of the params has the wrong format`;
+    this.name = 'Wrong format of params';
+}
