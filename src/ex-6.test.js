@@ -60,7 +60,7 @@ describe("Function isWord", () => {
   it("should works correctly", () => {
     expect(isWord("text")).toBe(true);
     expect(isWord(" some text")).toBe(false);
-    expect(isWord("  some")).toBe(false);
+    expect(isWord("  some")).toBe(true);
   });
 });
 
@@ -93,10 +93,10 @@ describe("Function pow", () => {
   it("should works correctly", () => {
     expect(pow(3, 2)).toBe(9);
     expect(pow(2, 3)).toBe(8);
-    expect(pow(0, 0)).toBe(0);
+    expect(pow(0, 0)).toBe(1);
     expect(pow(5, 0)).toBe(1);
     expect(pow(5, -2)).toBe(0.04);
-    expect(pow(-5, 2)).toBe(-25);
+    expect(pow(-5, 2)).toBe(25);
     expect(isWord(" some text")).toBe(false);
   });
 });

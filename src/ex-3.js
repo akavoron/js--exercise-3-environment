@@ -39,7 +39,7 @@ export function sumInRange(from, to) {
   return accumulator;
 }
 
-log(sumInRange(50, 100));
+log(`Сумма всех целых чисел из диапазона от 50 до 100: ${sumInRange(50, 100)}`);
 
 /**
  * 2. Вывести в консоль таблицу умножения на 7.
@@ -64,20 +64,15 @@ export function getMultTable(num) {
   }
 
   const accumulator = [];
-  let i;
 
-  while (i <= 9) {
+  for (let i = 1; i <= 9; i++) {
     accumulator.push(`${num} x ${i} = ${num * i}`);
   }
 
   return accumulator;
 }
 
-const mulArr = getMultTable(7);
-
-for (let i = 0; i < mulArr.length; i++) {
-  log(mulArr[i]);
-}
+log(getMultTable(7));
 
 /**
  * 3. Запросить у пользователя ввод числа N.
@@ -89,7 +84,7 @@ for (let i = 0; i < mulArr.length; i++) {
  * Находит среднее арифметическое всех нечетных чисел в диапазоне
  *
  * @param {number} from
- * @param {number} to
+ * @param {number} to   
  * @return {number}
  */
 export function averageOfOdd(from, to) {
@@ -124,5 +119,5 @@ export function averageOfOdd(from, to) {
   return Number((accumulator / count).toFixed(3));
 }
 
-const n = askFor("Введите N для подсчета ср. арифм. всех нечетных от 1 до N");
+const n = +askFor("Введите N для подсчета ср. арифм. всех нечетных от 1 до N");
 log(averageOfOdd(1, n));

@@ -1,4 +1,4 @@
-import { log } from "./render";
+// import { log } from "./render";
 
 export function TypeException(rightType) {
   if (rightType) {
@@ -29,6 +29,6 @@ export function ParamFormatException() {
   this.name = "Wrong format of params";
 }
 
-export function errMsg(e) {
-  log(e.name, e.message);
+export function errMsg() {
+  // log(e.name, e.message);
 }

@@ -31,7 +31,7 @@ export function mul(a, b) {
   return a * b;
 }
 
-log(mul(2, 3));
+log(`Произведение 2x3 = ${mul(2, 3)}`);
 
 /**
  * Сумма двух чисел
@@ -51,7 +51,7 @@ export function sum(a, b) {
   return a + b;
 }
 
-log(sum(2, 3));
+log(`Сумма 2+3 = ${sum(2, 3)}`);
 
 /**
  * 2. В двух переменных хранятся строки
@@ -78,7 +78,7 @@ export function getStringsLength(firstString, secondString) {
   return firstString.length + secondString.length;
 }
 
-log(getStringsLength("some", "text here"));
+log(`Сумма символов в строках "some" и "text here": ${getStringsLength("some", "text here")}`);
 
 /**
  * 3. Написать программу, которая запрашивает
@@ -107,8 +107,8 @@ export function getSumOfInlineDigits(number) {
   let accumulator = 0;
   const numString = String(number);
 
-  for (let i = 0; i < number.length; i++) {
-    accumulator += numString[i];
+  for (let i = 0; i < numString.length; i++) {
+    accumulator += Number(numString[i]);
   }
 
   return accumulator;

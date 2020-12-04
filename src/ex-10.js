@@ -27,7 +27,7 @@ export function isDate(string) {
  */
 
 export function isEmail(string) {
-  return string.search(/[\w\d-]*@[\w\d-]{2,}\.\w{2,}/) !== -1;
+  return string.search(/^[A-Za-z\d-]*@[A-Za-z\d-]{2,}\.[A-Za-z]{2,}$/) !== -1;
 }
 
 /**

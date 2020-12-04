@@ -20,7 +20,7 @@ export function checkFormatDate(dateString) {
     throw new TypeException("string");
   }
 
-  const res = dateString.math(/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/);
+  const res = dateString.match(/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/);
 
   if (
     !res ||
@@ -38,7 +38,7 @@ export function checkFormatDate(dateString) {
  * Получает дату по строке
  *
  * @param {string} dateString
- * @return {undefined}
+ * @return {object}
  */
 
 export function getDateFromString(dateString) {
@@ -51,8 +51,8 @@ export function getDateFromString(dateString) {
 
   checkFormatDate(dateString);
 
-  const res = dateString.math(/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/);
-  return new Date(res[1], res[2], res[3]);
+  const res = dateString.match(/([0-9]{2})\.([0-9]{2})\.([0-9]{4})/);
+  return new Date(res[3], res[2] - 1, res[1]);
 }
 
 /**
@@ -79,8 +79,6 @@ export function getDayOfWeek(dateString) {
   return day === 0 ? 7 : day;
 }
 
-const userDate = askFor("Enter the date in the next format: DD.MM.YYYY");
-log(["пн", "вт", "ср", "чт", "пт", "сб", "вс"][getDayOfWeek(userDate) - 1]);
 
 /**
  * 2. Написать программу, которая выводит в консоль
@@ -96,7 +94,7 @@ export function getMinutes() {
     now.getDate()
   );
 
-  return (startOfTheDay - now) / 1000 / 60;
+  return Math.round((now - startOfTheDay) / 1000 / 60);
 }
 log(getMinutes());
 
@@ -124,5 +122,5 @@ export function getLatest(dateString1, dateString2) {
   const date1 = getDateFromString(dateString1);
   const date2 = getDateFromString(dateString2);
 
-  return date1 < date2 ? dateString1 : dateString2;
+  return date1 > date2 ? dateString1 : dateString2;
 }

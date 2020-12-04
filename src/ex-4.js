@@ -48,8 +48,8 @@ export function Person(name, age, role) {
     if (arguments.length !== 1) {
       throw new NumOfVariablesException();
     }
-    if (typeof newRole !== "number") {
-      throw new TypeException("number");
+    if (typeof newRole !== "string") {
+      throw new TypeException("string");
     }
     this.role = newRole;
   };

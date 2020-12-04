@@ -27,8 +27,8 @@ export function createArray(min, max, count) {
 
   const arr = [];
 
-  for (let i; i < count; i++) {
-    arr.push((max - min) * Math.random() + min);
+  for (let i = 0; i < count; i++) {
+    arr.push(Math.round((max - min) * Math.random() + min));
   }
   return arr;
 }
@@ -90,7 +90,7 @@ export function increaseArray2Times(oldArr) {
     throw new TypeException("[]");
   }
 
-  let newArr;
+  const newArr = [];
 
   for (let i = 0; i < oldArr.length; i++) {
     if (typeof oldArr[i] !== "number") {

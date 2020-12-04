@@ -1,3 +1,7 @@
+import { advanceTo, clear } from "jest-date-mock";
+
+import { askFor, log } from './render';
+
 import {
   checkFormatDate,
   getDateFromString,
@@ -73,27 +77,27 @@ describe("Function getDateFromString", () => {
 
   it("should push a TypeException when the param's type is wrong", () => {
     try {
-      expect(getDayOfWeek(10)).toThrow(TypeException);
-      expect(getDayOfWeek(["10"])).toThrow(TypeException);
-      expect(getDayOfWeek({ value: "10" })).toThrow(TypeException);
-      expect(getDayOfWeek(false)).toThrow(TypeException);
-      expect(getDayOfWeek(true)).toThrow(TypeException);
-      expect(getDayOfWeek(null)).toThrow(TypeException);
-      expect(getDayOfWeek(undefined)).toThrow(TypeException);
+      expect(getDateFromString(10)).toThrow(TypeException);
+      expect(getDateFromString(["10"])).toThrow(TypeException);
+      expect(getDateFromString({ value: "10" })).toThrow(TypeException);
+      expect(getDateFromString(false)).toThrow(TypeException);
+      expect(getDateFromString(true)).toThrow(TypeException);
+      expect(getDateFromString(null)).toThrow(TypeException);
+      expect(getDateFromString(undefined)).toThrow(TypeException);
     } catch (err) {
       errMsg(err);
     }
   });
 
-  it("should returns a number", () => {
-    expect(typeof getDayOfWeek("10.10.2020")).toBe("number");
+  it("should returns a Date object", () => {
+    expect(getDateFromString("10.10.2020") instanceof Date).toBe(true);
   });
 
   it("should works correctly", () => {
     try {
-      expect(getDayOfWeek("07.10.2018")).toBe(7); // вс
-      expect(getDayOfWeek("19.03.2019")).toBe(2); // вт
-      expect(getDayOfWeek("02.12.2020")).toBe(3); // ср
+      expect(getDateFromString("07.10.2018").getFullYear()).toBe(2018);
+      expect(getDateFromString("07.10.2018").getMonth()).toBe(10);
+      expect(getDateFromString("07.10.2018").getDate()).toBe(7);
     } catch (err) {
       errMsg(err);
     }
@@ -130,46 +134,35 @@ describe("Function getDayOfWeek", () => {
   });
 
   it("should works correctly", () => {
-    try {
-      expect(getDayOfWeek("07.10.2018")).toBe(7); // sunday
-      expect(getDayOfWeek("19.03.2019")).toBe(2); // tuesday
-      expect(getDayOfWeek("02.12.2020")).toBe(3); // wednesday
-    } catch (err) {
-      errMsg(err);
-    }
+    jest.spyOn(window, "prompt").mockImplementation(() => "07.10.2018");
+    jest.spyOn(console, "log");
+    
+    const userDate = askFor("Enter the date in the next format: DD.MM.YYYY");
+    log(["пн", "вт", "ср", "чт", "пт", "сб", "вс"][getDayOfWeek(userDate) - 1]);
+
+    // expect(getDayOfWeek("07.10.2018")).toBe(7); // sunday
+    // expect(getDayOfWeek("19.03.2019")).toBe(2); // tuesday
+    // expect(getDayOfWeek("02.12.2020")).toBe(3); // wednesday
+
+    expect(console.log).toHaveBeenCalledWith("вс");
   });
 });
 
 describe("Function getMinutes", () => {
-  let OriginalDate;
-
   beforeEach(() => {
-    OriginalDate = window.Date;
-    window.Date = () => {
-      const date = new OriginalDate();
-      date.setFullYear(2020);
-      date.setMonth(0);
-      date.setDate(1);
-      date.setHours(1);
-      date.setMinutes(1);
-      return date;
-    };
-  });
-
-  it("should returns a number", () => {
-    expect(getMinutes()).toBe("number");
-  });
-
-  it("should works correctly", () => {
-    try {
-      expect(getMinutes()).toBe(61);
-    } catch (err) {
-      errMsg(err);
-    }
+    advanceTo(new Date(2018, 5, 27, 3, 10, 0));
   });
 
   afterEach(() => {
-    window.Date = OriginalDate;
+    clear();
+  });
+
+  it("should returns a number", () => {
+    expect(typeof getMinutes()).toBe("number");
+  });
+
+  it("should works correctly", () => {
+    expect(getMinutes()).toBe(190);
   });
 });
 
@@ -205,10 +198,6 @@ describe("Function getLatest", () => {
   });
 
   it("should works correctly", () => {
-    try {
-      expect(getLatest("07.10.2020", "04.11.2020")).toBe("04.11.2020");
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(getLatest("07.10.2020", "04.11.2020")).toBe("04.11.2020");
   });
 });

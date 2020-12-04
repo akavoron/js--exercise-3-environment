@@ -53,7 +53,12 @@ describe("The getMultTable function", () => {
       "5 x 8 = 40",
       "5 x 9 = 45",
     ];
-    expect(getMultTable(5)).toBe(arr);
+
+    const arrRes = getMultTable(5);
+    for (let i = 0; i < arrRes.length; i++) {
+      expect(arrRes[i]).toBe(arr[i]);
+    }
+
     expect(getMultTable(10).length).toBe(9);
   });
   it("should push a TypeException when the param's type is wrong", () => {
@@ -93,7 +98,7 @@ describe("The averageOfOdd function", () => {
     expect(averageOfOdd(1, 5)).toBe(3); // 1+3+5 = 9/3 = 3
     expect(averageOfOdd(5, 1)).toBe(3); // 1+3+5 = 9/3 = 3
     expect(averageOfOdd(4, 10)).toBe(7); // 5+7+9 = 21/3 = 7
-    expect(averageOfOdd(-3, 5)).toBe(0.833); // (-3)+(-1)+0+1+3+5 = 5/6 = 0.833
+    expect(averageOfOdd(-3, 5)).toBe(1); // (-3)+(-1)+1+3+5 = 5/5 = 1
     expect(averageOfOdd(-5, -10)).toBe(-7); // (-5)+(-7)+(-9) = -21/3 = -7
   });
   it("should push a TypeException when the param's type is wrong", () => {

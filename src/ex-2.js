@@ -71,7 +71,7 @@ export function getMonthText(mNum) {
     "декабрь",
   ];
 
-  return namesArr[mNum];
+  return namesArr[mNum - 1];
 }
 
 // другой - более длинный вариант решения
@@ -155,12 +155,12 @@ export function isFitCircleToSquare(circle, square) {
   }
 
   // D = 2 * √(S/Pi)
-  const circleD = 2 * Math.sqrt(circle);
+  const circleD = 2 * Math.sqrt(circle / Math.PI);
 
   // a = √S
   const squareA = Math.sqrt(square);
 
-  return circleD > squareA;
+  return circleD <= squareA;
 }
 
 const circle = 10;

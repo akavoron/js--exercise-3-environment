@@ -29,13 +29,14 @@ export function isRightTriagle(a, b, c) {
  */
 export function getParamsOfCircle(r) {
   return {
-    c: 2 * 3.14 * r,
-    s: 3.14 * r ** 2,
+    c: 2 * Math.PI * r,
+    s: Math.PI * r ** 2,
   };
 }
 
-const param = askFor("Type R");
-log(`Длина окружности: ${param.c}, площадь: ${param.s}`);
+const radius = askFor("Type R");
+const circleParams = getParamsOfCircle(radius);
+log(`Длина окружности: ${circleParams.c}, площадь: ${circleParams.s}`);
 
 /**
  * Пользователь вводит числа a, b и c.
@@ -63,7 +64,7 @@ export function getRootOfQuadraticEquation(a, b, c) {
   }
 
   return {
-    x1: ((-b * Math.sqrt(d)) / 2) * a,
-    x2: ((-b * Math.sqrt(d)) / 2) * a,
+    x1: ((-b + Math.sqrt(d)) / 2) * a,
+    x2: ((-b - Math.sqrt(d)) / 2) * a,
   };
 }

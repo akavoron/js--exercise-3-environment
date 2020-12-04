@@ -37,7 +37,7 @@ export function isWord(string) {
     throw new TypeException("string");
   }
 
-  return string.trim().split(" ") === 1;
+  return string.trim().split(" ").length === 1;
 }
 
 /**

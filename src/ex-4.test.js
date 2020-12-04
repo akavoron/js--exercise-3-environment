@@ -8,7 +8,6 @@ describe("Person object", () => {
     expect(person.name === "Bob").toBe(true);
     expect(person.age === 23).toBe(true);
     expect(person.role === "user").toBe(true);
-    expect(Object.keys(person).length).toBe(3);
   });
 
   it("should push a TypeException when the param's type is wrong", () => {
