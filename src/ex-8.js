@@ -79,6 +79,17 @@ export function getDayOfWeek(dateString) {
   return day === 0 ? 7 : day;
 }
 
+/**
+ * Запрашивает у пользователя дату и выводит по ней день недели
+ * в виде строки.
+ * 
+ * @return {number}
+ */
+export function getDayOfWeekMessage () {
+  const userDate = askFor("Enter the date in the next format: DD.MM.YYYY");
+  log(["пн", "вт", "ср", "чт", "пт", "сб", "вс"][getDayOfWeek(userDate) - 1]);
+}
+
 
 /**
  * 2. Написать программу, которая выводит в консоль

@@ -34,9 +34,9 @@ export function getParamsOfCircle(r) {
   };
 }
 
-const radius = askFor("Type R");
-const circleParams = getParamsOfCircle(radius);
-log(`Длина окружности: ${circleParams.c}, площадь: ${circleParams.s}`);
+// const radius = +askFor("Type R");
+// const circleParams = getParamsOfCircle(radius);
+// log(`Длина окружности: ${circleParams.c}, площадь: ${circleParams.s}`);
 
 /**
  * Пользователь вводит числа a, b и c.

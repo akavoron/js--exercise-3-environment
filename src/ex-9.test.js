@@ -4,6 +4,8 @@ import {
   getRootOfQuadraticEquation,
 } from "./ex-9";
 
+import { askFor, log } from './render';
+
 describe("Function isRightTriagle", () => {
   it("works correctly", () => {
     expect(isRightTriagle(2, 3, 13)).toBe(true);
@@ -24,12 +26,19 @@ describe("Function getParamsOfCircle", () => {
   });
 
   it("works correctly", () => {
-    const res = getParamsOfCircle(20);
+    jest.spyOn(window, "prompt").mockImplementation(() => '20');
+    jest.spyOn(console, "log");
+
+    const radius = +askFor("Type R");
+    const circleParams = getParamsOfCircle(radius);
+    const c = +circleParams.c.toFixed(1);
+    const s = +circleParams.s.toFixed(1);
+    log(`Длина окружности: ${c}, площадь: ${s}`);
 
     // c: 2 * pi * r,
     // s: pi * r ** 2,
-    expect(+res.c.toFixed(1)).toBe(125.7);
-    expect(+res.s.toFixed(1)).toBe(1256.6);
+    expect(console.log)
+      .toHaveBeenCalledWith(`Длина окружности: 125.7, площадь: 1256.6`);
   });
 });
 

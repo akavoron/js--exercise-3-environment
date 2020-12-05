@@ -1,4 +1,7 @@
 import { sumInRange, getMultTable, averageOfOdd } from "./ex-3";
+
+import { askFor, log } from './render';
+
 import {
   errMsg,
   TypeException,
@@ -95,11 +98,29 @@ describe("The getMultTable function", () => {
 
 describe("The averageOfOdd function", () => {
   it("should works correctly with right param's type", () => {
-    expect(averageOfOdd(1, 5)).toBe(3); // 1+3+5 = 9/3 = 3
-    expect(averageOfOdd(5, 1)).toBe(3); // 1+3+5 = 9/3 = 3
-    expect(averageOfOdd(4, 10)).toBe(7); // 5+7+9 = 21/3 = 7
-    expect(averageOfOdd(-3, 5)).toBe(1); // (-3)+(-1)+1+3+5 = 5/5 = 1
-    expect(averageOfOdd(-5, -10)).toBe(-7); // (-5)+(-7)+(-9) = -21/3 = -7
+
+    [
+      [[1, 5], 3],
+      [[5, 1], 3],
+      [[4, 10], 7],
+      [[-3, 5], 1],
+      [[-5, -10], -7],
+
+    ].forEach(data => {
+      jest.spyOn(window, "prompt").mockImplementation(() => data[0][1]);
+      jest.spyOn(console, "log");
+
+      const n = +askFor("Введите N для подсчета ср. арифм. всех нечетных от 1 до N");
+      log(averageOfOdd(data[0][0], n));
+
+      expect(console.log).toHaveBeenCalledWith(data[1]);
+    });
+
+    // expect(averageOfOdd(1, 5)).toBe(3); // 1+3+5 = 9/3 = 3
+    // expect(averageOfOdd(5, 1)).toBe(3); // 1+3+5 = 9/3 = 3
+    // expect(averageOfOdd(4, 10)).toBe(7); // 5+7+9 = 21/3 = 7
+    // expect(averageOfOdd(-3, 5)).toBe(1); // (-3)+(-1)+1+3+5 = 5/5 = 1
+    // expect(averageOfOdd(-5, -10)).toBe(-7); // (-5)+(-7)+(-9) = -21/3 = -7
   });
   it("should push a TypeException when the param's type is wrong", () => {
     try {

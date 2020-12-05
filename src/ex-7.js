@@ -40,11 +40,6 @@ export function createElements() {
 }
 createElements();
 
-const contEl = document.querySelector(".content");
-const formEl = document.querySelector("form");
-const inpTextEl = document.querySelector("input[type=text]");
-const btnEl = document.querySelector("button");
-
 export const config = {
   num: 5,
 };
@@ -64,7 +59,7 @@ export function addNewParagraph(text) {
 
   const newP = document.createElement("p");
   newP.innerText = text;
-  contEl.appendChild(newP);
+  document.querySelector(".content").appendChild(newP);
 }
 
 /**
@@ -88,18 +83,20 @@ export function clearUnnecessaryPar(num = 5) {
  * @return {undefined}
  */
 export function init() {
-  formEl.addEventListener("submit", (e) => {
+
+  document.querySelector("form").onsubmit = (e) => {
     e.preventDefault();
 
-    addNewParagraph(inpTextEl.value);
+    addNewParagraph(document.querySelector("input[type=text]").value);
     clearUnnecessaryPar(config.num);
 
-    inpTextEl.value = "";
-    btnEl.hidden = true;
-  });
+    document.querySelector("input[type=text]").value = "";
+    document.querySelector("button").hidden = true;
+  };
 
-  inpTextEl.addEventListener("keyup", () => {
-    btnEl.hidden = inpTextEl.value === "";
+  document.querySelector("input[type=text]").addEventListener("keyup", () => {
+    document.querySelector("button").hidden = document
+      .querySelector("input[type=text]").value === "";
   });
 }
 

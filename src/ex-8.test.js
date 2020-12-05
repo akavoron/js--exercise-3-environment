@@ -1,11 +1,10 @@
 import { advanceTo, clear } from "jest-date-mock";
 
-import { askFor, log } from './render';
-
 import {
   checkFormatDate,
   getDateFromString,
   getDayOfWeek,
+  getDayOfWeekMessage,
   getMinutes,
   getLatest,
 } from "./ex-8";
@@ -134,17 +133,30 @@ describe("Function getDayOfWeek", () => {
   });
 
   it("should works correctly", () => {
-    jest.spyOn(window, "prompt").mockImplementation(() => "07.10.2018");
-    jest.spyOn(console, "log");
-    
-    const userDate = askFor("Enter the date in the next format: DD.MM.YYYY");
-    log(["пн", "вт", "ср", "чт", "пт", "сб", "вс"][getDayOfWeek(userDate) - 1]);
+    [
+      ['07.10.2018', 7],
+      ['19.03.2019', 2],
+      ['02.12.2020', 3],
+    ].forEach(data => {
+      expect(getDayOfWeek(data[0])).toBe(data[1]);
+    });
+  });
+});
 
-    // expect(getDayOfWeek("07.10.2018")).toBe(7); // sunday
-    // expect(getDayOfWeek("19.03.2019")).toBe(2); // tuesday
-    // expect(getDayOfWeek("02.12.2020")).toBe(3); // wednesday
+describe("Function getDayOfWeekMessage", () => {
+  it("should works correctly", () => {
+    [
+      ['07.10.2018', 'вс'],
+      ['19.03.2019', 'вт'],
+      ['02.12.2020', 'ср'],
+    ].forEach(data => {
+      jest.spyOn(window, "prompt").mockImplementation(() => data[0]);
+      jest.spyOn(console, "log");
 
-    expect(console.log).toHaveBeenCalledWith("вс");
+      getDayOfWeekMessage();
+
+      expect(console.log).toHaveBeenCalledWith(data[1]);
+    });
   });
 });
 

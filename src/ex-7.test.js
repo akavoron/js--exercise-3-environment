@@ -17,10 +17,10 @@ const btnEl = document.querySelector("button");
 
 describe("On the page", () => {
   it("we have all necessary elements", () => {
-    expect(!!contEl.length).toBe(true);
-    expect(!!formEl.length).toBe(true);
-    expect(!!inpTextEl.length).toBe(true);
-    expect(!!btnEl.length).toBe(true);
+    expect(contEl !== null).toBe(true);
+    expect(formEl !== null).toBe(true);
+    expect(inpTextEl !== null).toBe(true);
+    expect(btnEl !== null).toBe(true);
   });
   it("the input text is hidden by default", () => {
     expect(btnEl.hidden).toBe(true);
@@ -34,7 +34,8 @@ describe("On the page", () => {
 });
 
 describe("Function init", () => {
-  it("attach a lintener on the form element", () => {
+  it("attach a listener on the form element", () => {
+    init();
     expect(typeof formEl.onsubmit === "function").toBe(true);
   });
 });
@@ -49,20 +50,27 @@ describe("Function addNewParagraph", () => {
     buff.btnEl = document.querySelector("button").cloneNode(true);
   });
 
+  afterEach(() => {
+    document.querySelector(".content").replaceWith(buff.contEl);
+    document.querySelector("form").replaceWith(buff.formEl);
+    document.querySelector("input[type=text]").replaceWith(inpTextEl);
+    document.querySelector("button").replaceWith(btnEl);
+  });
+
   it("adds new paragraphs at the end of a list when the form is submitted", () => {
     init();
 
-    buff.inpTextEl.value = "test";
-    buff.formEl.submit();
+    inpTextEl.value = "test";
+    formEl.submit();
 
-    const flag =
-      document.querySelector(".content p:last-child").innerText === "test";
+    const flag = document.querySelector(".content p:last-child").innerText === "test";
     expect(flag).toBe(true);
   });
 
   it("removes old paragraphs when there are too many", () => {
     for (let i = 0; i < config.num * 2; i++) {
       addNewParagraph(`test ${i}`);
+      clearUnnecessaryPar(config.num);
     }
     expect(document.querySelectorAll(".content p").length).toBe(config.num);
   });
@@ -87,13 +95,6 @@ describe("Function addNewParagraph", () => {
     } catch (err) {
       errMsg(err);
     }
-  });
-
-  afterEach(() => {
-    document.querySelector(".content").replaceWith(buff.contEl);
-    document.querySelector("form").replaceWith(buff.formEl);
-    document.querySelector("input[type=text]").replaceWith(inpTextEl);
-    document.querySelector("button").replaceWith(btnEl);
   });
 });
 

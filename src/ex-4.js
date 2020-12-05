@@ -55,26 +55,6 @@ export function Person(name, age, role) {
   };
 }
 
-/**
- * Создайте объект user,
- * содержащий поле name
- * со значением ‘John’.
- */
-const user = new Person("John");
-
-/**
- * 1. Запросить у пользователя ввод числа.
- * Записать введенное значение в поле
- * age объекта user.
- */
-const userAge = +askFor("Введите возраст пользователя");
-user.setAge(userAge);
-
-/**
- * 2. Создать копию объекта user с именем admin.
- * Добавить новому объекту поле role
- * со значением ‘admin’.
- */
 
 /**
  * Создает копию пользователя
@@ -90,6 +70,28 @@ export function copyPerson(person) {
   return { ...person };
 }
 
+
+/**
+ * Создайте объект user,
+ * содержащий поле name
+ * со значением ‘John’.
+ */
+const user = new Person("John");
+
+/**
+ * 1. Запросить у пользователя ввод числа.
+ * Записать введенное значение в поле
+ * age объекта user.
+ */
+// const userAge = +askFor("Введите возраст пользователя");
+const userAge = +'20';
+user.setAge(userAge);
+
+/**
+ * 2. Создать копию объекта user с именем admin.
+ * Добавить новому объекту поле role
+ * со значением ‘admin’.
+ */
 const admin = copyPerson(user);
 admin.setRole("admin");
 
@@ -98,6 +100,5 @@ admin.setRole("admin");
  * в отдельные переменные. Имена переменных
  * должны совпадать с названиями полей.
  */
-
 const { name, age, role } = admin;
 log(`Значения переменных: name=${name}, age=${age}, role=${role}`);

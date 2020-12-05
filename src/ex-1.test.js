@@ -1,5 +1,7 @@
 import { sum, mul, getStringsLength, getSumOfInlineDigits } from "./ex-1";
 
+import { askFor, log } from './render';
+
 import {
   errMsg,
   TypeException,
@@ -119,10 +121,22 @@ describe("The getStringsLength function", () => {
 
 describe("The getSumOfInlineDigits function", () => {
   it("should works correctly with right param's type", () => {
-    expect(getSumOfInlineDigits(123)).toBe(6);
-    expect(getSumOfInlineDigits(321)).toBe(6);
-    expect(getSumOfInlineDigits(707)).toBe(14);
-    expect(getSumOfInlineDigits(777)).toBe(21);
+
+    [
+      ['123', 6],
+      ['321', 6],
+      ['707', 14],
+      ['777', 21],
+    ].forEach(data => {
+      jest.spyOn(window, "prompt").mockImplementation(() => data[0]);
+      jest.spyOn(console, "log");
+
+      const num = +askFor("Type a number with 3 digits:");
+      log(getSumOfInlineDigits(num));
+
+      expect(console.log).toHaveBeenCalledWith(data[1]);
+    });
+    
   });
 
   it("should push a TypeException when the param's type is wrong", () => {

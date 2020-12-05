@@ -119,5 +119,5 @@ export function averageOfOdd(from, to) {
   return Number((accumulator / count).toFixed(3));
 }
 
-const n = +askFor("Введите N для подсчета ср. арифм. всех нечетных от 1 до N");
-log(averageOfOdd(1, n));
+// const n = +askFor("Введите N для подсчета ср. арифм. всех нечетных от 1 до N");
+// log(averageOfOdd(1, n));
