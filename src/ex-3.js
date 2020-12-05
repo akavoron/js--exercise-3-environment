@@ -1,4 +1,4 @@
-import { log, askFor } from "./render";
+import { log } from "./render";
 import { TypeException, NumOfVariablesException } from "./exceptions";
 
 /**
@@ -84,7 +84,7 @@ log(getMultTable(7));
  * Находит среднее арифметическое всех нечетных чисел в диапазоне
  *
  * @param {number} from
- * @param {number} to   
+ * @param {number} to
  * @return {number}
  */
 export function averageOfOdd(from, to) {

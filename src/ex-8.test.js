@@ -134,10 +134,10 @@ describe("Function getDayOfWeek", () => {
 
   it("should works correctly", () => {
     [
-      ['07.10.2018', 7],
-      ['19.03.2019', 2],
-      ['02.12.2020', 3],
-    ].forEach(data => {
+      ["07.10.2018", 7],
+      ["19.03.2019", 2],
+      ["02.12.2020", 3],
+    ].forEach((data) => {
       expect(getDayOfWeek(data[0])).toBe(data[1]);
     });
   });
@@ -146,10 +146,10 @@ describe("Function getDayOfWeek", () => {
 describe("Function getDayOfWeekMessage", () => {
   it("should works correctly", () => {
     [
-      ['07.10.2018', 'вс'],
-      ['19.03.2019', 'вт'],
-      ['02.12.2020', 'ср'],
-    ].forEach(data => {
+      ["07.10.2018", "вс"],
+      ["19.03.2019", "вт"],
+      ["02.12.2020", "ср"],
+    ].forEach((data) => {
       jest.spyOn(window, "prompt").mockImplementation(() => data[0]);
       jest.spyOn(console, "log");
 

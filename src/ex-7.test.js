@@ -63,7 +63,8 @@ describe("Function addNewParagraph", () => {
     inpTextEl.value = "test";
     formEl.submit();
 
-    const flag = document.querySelector(".content p:last-child").innerText === "test";
+    const flag =
+      document.querySelector(".content p:last-child").innerText === "test";
     expect(flag).toBe(true);
   });
 

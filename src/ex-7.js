@@ -83,7 +83,6 @@ export function clearUnnecessaryPar(num = 5) {
  * @return {undefined}
  */
 export function init() {
-
   document.querySelector("form").onsubmit = (e) => {
     e.preventDefault();
 
@@ -95,8 +94,8 @@ export function init() {
   };
 
   document.querySelector("input[type=text]").addEventListener("keyup", () => {
-    document.querySelector("button").hidden = document
-      .querySelector("input[type=text]").value === "";
+    document.querySelector("button").hidden =
+      document.querySelector("input[type=text]").value === "";
   });
 }
 

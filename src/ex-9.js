@@ -1,4 +1,4 @@
-import { log, askFor } from "./render";
+// import { log, askFor } from "./render";
 
 /**
  * 1. Даны длины трёх сторон треугольника.

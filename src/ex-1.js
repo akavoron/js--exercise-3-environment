@@ -1,4 +1,4 @@
-import { log, askFor } from "./render";
+import { log } from "./render";
 
 import {
   TypeException,
@@ -78,7 +78,12 @@ export function getStringsLength(firstString, secondString) {
   return firstString.length + secondString.length;
 }
 
-log(`Сумма символов в строках "some" и "text here": ${getStringsLength("some", "text here")}`);
+log(
+  `Сумма символов в строках "some" и "text here": ${getStringsLength(
+    "some",
+    "text here"
+  )}`
+);
 
 /**
  * 3. Написать программу, которая запрашивает

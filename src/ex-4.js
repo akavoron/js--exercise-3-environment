@@ -1,4 +1,4 @@
-import { log, askFor } from "./render";
+import { log } from "./render";
 import { TypeException, NumOfVariablesException } from "./exceptions";
 
 /**
@@ -55,7 +55,6 @@ export function Person(name, age, role) {
   };
 }
 
-
 /**
  * Создает копию пользователя
  *
@@ -70,7 +69,6 @@ export function copyPerson(person) {
   return { ...person };
 }
 
-
 /**
  * Создайте объект user,
  * содержащий поле name
@@ -84,7 +82,7 @@ const user = new Person("John");
  * age объекта user.
  */
 // const userAge = +askFor("Введите возраст пользователя");
-const userAge = +'20';
+const userAge = +"20";
 user.setAge(userAge);
 
 /**

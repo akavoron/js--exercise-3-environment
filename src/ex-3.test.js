@@ -1,6 +1,6 @@
 import { sumInRange, getMultTable, averageOfOdd } from "./ex-3";
 
-import { askFor, log } from './render';
+import { askFor, log } from "./render";
 
 import {
   errMsg,
@@ -98,19 +98,19 @@ describe("The getMultTable function", () => {
 
 describe("The averageOfOdd function", () => {
   it("should works correctly with right param's type", () => {
-
     [
       [[1, 5], 3],
       [[5, 1], 3],
       [[4, 10], 7],
       [[-3, 5], 1],
       [[-5, -10], -7],
-
-    ].forEach(data => {
+    ].forEach((data) => {
       jest.spyOn(window, "prompt").mockImplementation(() => data[0][1]);
       jest.spyOn(console, "log");
 
-      const n = +askFor("Введите N для подсчета ср. арифм. всех нечетных от 1 до N");
+      const n = +askFor(
+        "Введите N для подсчета ср. арифм. всех нечетных от 1 до N"
+      );
       log(averageOfOdd(data[0][0], n));
 
       expect(console.log).toHaveBeenCalledWith(data[1]);
