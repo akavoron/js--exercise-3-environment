@@ -10,7 +10,6 @@ import {
 } from "./ex-8";
 
 import {
-  errMsg,
   TypeException,
   NumOfVariablesException,
   ParamFormatException,
@@ -18,74 +17,106 @@ import {
 
 describe("Function checkFormatDate", () => {
   it("has exactly 1 parameters", () => {
-    try {
-      expect(checkFormatDate()).toThrow(NumOfVariablesException);
-      expect(checkFormatDate("01.10.2020", "02.10.2020")).toThrow(
-        NumOfVariablesException
-      );
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      checkFormatDate();
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      checkFormatDate("01.10.2020", "02.10.2020");
+    }).toThrow(NumOfVariablesException);
   });
 
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(checkFormatDate(10)).toThrow(TypeException);
-      expect(checkFormatDate(["10"])).toThrow(TypeException);
-      expect(checkFormatDate({ value: "10" })).toThrow(TypeException);
-      expect(checkFormatDate(false)).toThrow(TypeException);
-      expect(checkFormatDate(true)).toThrow(TypeException);
-      expect(checkFormatDate(null)).toThrow(TypeException);
-      expect(checkFormatDate(undefined)).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      checkFormatDate(10);
+    }).toThrow(TypeException);
+    expect(() => {
+      checkFormatDate(["10"]);
+    }).toThrow(TypeException);
+    expect(() => {
+      checkFormatDate({ value: "10" });
+    }).toThrow(TypeException);
+    expect(() => {
+      checkFormatDate(false);
+    }).toThrow(TypeException);
+    expect(() => {
+      checkFormatDate(true);
+    }).toThrow(TypeException);
+    expect(() => {
+      checkFormatDate(null);
+    }).toThrow(TypeException);
+    expect(() => {
+      checkFormatDate(undefined);
+    }).toThrow(TypeException);
   });
 
   it("should push a ParamFormatException when the param has the wrong format", () => {
-    try {
-      expect(checkFormatDate("01-10-2020")).toThrow(ParamFormatException);
-      expect(checkFormatDate("01 10 2020")).toThrow(ParamFormatException);
-      expect(checkFormatDate("2020.10.01")).toThrow(ParamFormatException);
+    expect(() => {
+      checkFormatDate("01-10-2020");
+    }).toThrow(ParamFormatException);
+    expect(() => {
+      checkFormatDate("01 10 2020");
+    }).toThrow(ParamFormatException);
+    expect(() => {
+      checkFormatDate("2020.10.01");
+    }).toThrow(ParamFormatException);
 
-      expect(checkFormatDate("1.10.2020")).toThrow(ParamFormatException);
-      expect(checkFormatDate("01.1.2020")).toThrow(ParamFormatException);
-      expect(checkFormatDate("01.10.20")).toThrow(ParamFormatException);
+    expect(() => {
+      checkFormatDate("1.10.2020");
+    }).toThrow(ParamFormatException);
+    expect(() => {
+      checkFormatDate("01.1.2020");
+    }).toThrow(ParamFormatException);
+    expect(() => {
+      checkFormatDate("01.10.20");
+    }).toThrow(ParamFormatException);
 
-      expect(checkFormatDate("00.10.2020")).toThrow(ParamFormatException);
-      expect(checkFormatDate("35.10.2020")).toThrow(ParamFormatException);
-      expect(checkFormatDate("01.00.2020")).toThrow(ParamFormatException);
-      expect(checkFormatDate("01.14.2020")).toThrow(ParamFormatException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      checkFormatDate("00.10.2020");
+    }).toThrow(ParamFormatException);
+    expect(() => {
+      checkFormatDate("35.10.2020");
+    }).toThrow(ParamFormatException);
+    expect(() => {
+      checkFormatDate("01.00.2020");
+    }).toThrow(ParamFormatException);
+    expect(() => {
+      checkFormatDate("01.14.2020");
+    }).toThrow(ParamFormatException);
   });
 });
 
 describe("Function getDateFromString", () => {
   it("has exactly 1 parameters", () => {
-    try {
-      expect(getDateFromString()).toThrow(NumOfVariablesException);
-      expect(getDateFromString("01.10.2020", "02.10.2020")).toThrow(
-        NumOfVariablesException
-      );
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      getDateFromString();
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      getDateFromString("01.10.2020", "02.10.2020");
+    }).toThrow(NumOfVariablesException);
   });
 
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(getDateFromString(10)).toThrow(TypeException);
-      expect(getDateFromString(["10"])).toThrow(TypeException);
-      expect(getDateFromString({ value: "10" })).toThrow(TypeException);
-      expect(getDateFromString(false)).toThrow(TypeException);
-      expect(getDateFromString(true)).toThrow(TypeException);
-      expect(getDateFromString(null)).toThrow(TypeException);
-      expect(getDateFromString(undefined)).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      getDateFromString(10);
+    }).toThrow(TypeException);
+    expect(() => {
+      getDateFromString(["10"]);
+    }).toThrow(TypeException);
+    expect(() => {
+      getDateFromString({ value: "10" });
+    }).toThrow(TypeException);
+    expect(() => {
+      getDateFromString(false);
+    }).toThrow(TypeException);
+    expect(() => {
+      getDateFromString(true);
+    }).toThrow(TypeException);
+    expect(() => {
+      getDateFromString(null);
+    }).toThrow(TypeException);
+    expect(() => {
+      getDateFromString(undefined);
+    }).toThrow(TypeException);
   });
 
   it("should returns a Date object", () => {
@@ -93,39 +124,41 @@ describe("Function getDateFromString", () => {
   });
 
   it("should works correctly", () => {
-    try {
-      expect(getDateFromString("07.10.2018").getFullYear()).toBe(2018);
-      expect(getDateFromString("07.10.2018").getMonth()).toBe(10);
-      expect(getDateFromString("07.10.2018").getDate()).toBe(7);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(getDateFromString("07.10.2018").getFullYear()).toBe(2018);
+    expect(getDateFromString("07.10.2018").getMonth()).toBe(9);
+    expect(getDateFromString("07.10.2018").getDate()).toBe(7);
   });
 });
 
 describe("Function getDayOfWeek", () => {
   it("has exactly 1 parameters", () => {
-    try {
-      expect(getDayOfWeek("01.10.2020", "02.10.2020")).toThrow(
-        NumOfVariablesException
-      );
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      getDayOfWeek("01.10.2020", "02.10.2020");
+    }).toThrow(NumOfVariablesException);
   });
 
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(getDayOfWeek(10)).toThrow(TypeException);
-      expect(getDayOfWeek(["10"])).toThrow(TypeException);
-      expect(getDayOfWeek({ value: "10" })).toThrow(TypeException);
-      expect(getDayOfWeek(false)).toThrow(TypeException);
-      expect(getDayOfWeek(true)).toThrow(TypeException);
-      expect(getDayOfWeek(null)).toThrow(TypeException);
-      expect(getDayOfWeek(undefined)).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      getDayOfWeek(10);
+    }).toThrow(TypeException);
+    expect(() => {
+      getDayOfWeek(["10"]);
+    }).toThrow(TypeException);
+    expect(() => {
+      getDayOfWeek({ value: "10" });
+    }).toThrow(TypeException);
+    expect(() => {
+      getDayOfWeek(false);
+    }).toThrow(TypeException);
+    expect(() => {
+      getDayOfWeek(true);
+    }).toThrow(TypeException);
+    expect(() => {
+      getDayOfWeek(null);
+    }).toThrow(TypeException);
+    expect(() => {
+      getDayOfWeek(undefined);
+    }).toThrow(TypeException);
   });
 
   it("should returns a number", () => {
@@ -180,29 +213,39 @@ describe("Function getMinutes", () => {
 
 describe("Function getLatest", () => {
   it("has exactly 2 parameters", () => {
-    try {
-      expect(getLatest()).toThrow(NumOfVariablesException);
-      expect(getLatest("01.10.2020")).toThrow(NumOfVariablesException);
-      expect(getLatest("01.10.2020", "10.10.2020", "15.10.2020")).toThrow(
-        NumOfVariablesException
-      );
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      getLatest();
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      getLatest("01.10.2020");
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      getLatest("01.10.2020", "10.10.2020", "15.10.2020");
+    }).toThrow(NumOfVariablesException);
   });
 
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(getLatest(10, "01.10.2020")).toThrow(TypeException);
-      expect(getLatest("01.10.2020", ["10"])).toThrow(TypeException);
-      expect(getLatest({ value: "10" }, "01.10.2020")).toThrow(TypeException);
-      expect(getLatest(false, "01.10.2020")).toThrow(TypeException);
-      expect(getLatest("01.10.2020", true)).toThrow(TypeException);
-      expect(getLatest("01.10.2020", null)).toThrow(TypeException);
-      expect(getLatest(undefined, "01.10.2020")).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      getLatest(10, "01.10.2020");
+    }).toThrow(TypeException);
+    expect(() => {
+      getLatest("01.10.2020", ["10"]);
+    }).toThrow(TypeException);
+    expect(() => {
+      getLatest({ value: "10" }, "01.10.2020");
+    }).toThrow(TypeException);
+    expect(() => {
+      getLatest(false, "01.10.2020");
+    }).toThrow(TypeException);
+    expect(() => {
+      getLatest("01.10.2020", true);
+    }).toThrow(TypeException);
+    expect(() => {
+      getLatest("01.10.2020", null);
+    }).toThrow(TypeException);
+    expect(() => {
+      getLatest(undefined, "01.10.2020");
+    }).toThrow(TypeException);
   });
 
   it("should returns a string", () => {

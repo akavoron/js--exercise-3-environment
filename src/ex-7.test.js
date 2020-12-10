@@ -6,7 +6,7 @@ import {
   init,
 } from "./ex-7";
 
-import { errMsg, TypeException, NumOfVariablesException } from "./exceptions";
+import { TypeException, NumOfVariablesException } from "./exceptions";
 
 createElements();
 
@@ -77,40 +77,54 @@ describe("Function addNewParagraph", () => {
   });
 
   it("has exactly 1 parameters", () => {
-    try {
-      expect(addNewParagraph("test")).toThrow(NumOfVariablesException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      addNewParagraph("test", "test2");
+    }).toThrow(NumOfVariablesException);
   });
-
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(addNewParagraph(10)).toThrow(TypeException);
-      expect(addNewParagraph(["10"])).toThrow(TypeException);
-      expect(addNewParagraph({ value: "10" })).toThrow(TypeException);
-      expect(addNewParagraph(false)).toThrow(TypeException);
-      expect(addNewParagraph(true)).toThrow(TypeException);
-      expect(addNewParagraph(null)).toThrow(TypeException);
-      expect(addNewParagraph(undefined)).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      addNewParagraph(10);
+    }).toThrow(TypeException);
+    expect(() => {
+      addNewParagraph(["10"]);
+    }).toThrow(TypeException);
+    expect(() => {
+      addNewParagraph({ value: "10" });
+    }).toThrow(TypeException);
+    expect(() => {
+      addNewParagraph(false);
+    }).toThrow(TypeException);
+    expect(() => {
+      addNewParagraph(true);
+    }).toThrow(TypeException);
+    expect(() => {
+      addNewParagraph(null);
+    }).toThrow(TypeException);
+    expect(() => {
+      addNewParagraph(undefined);
+    }).toThrow(TypeException);
   });
 });
 
 describe("Function clearUnnecessaryPar", () => {
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(clearUnnecessaryPar("10")).toThrow(TypeException);
-      expect(clearUnnecessaryPar(["10"])).toThrow(TypeException);
-      expect(clearUnnecessaryPar({ value: "10" })).toThrow(TypeException);
-      expect(clearUnnecessaryPar(false)).toThrow(TypeException);
-      expect(clearUnnecessaryPar(true)).toThrow(TypeException);
-      expect(clearUnnecessaryPar(null)).toThrow(TypeException);
-      expect(clearUnnecessaryPar(undefined)).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      clearUnnecessaryPar("10");
+    }).toThrow(TypeException);
+    expect(() => {
+      clearUnnecessaryPar(["10"]);
+    }).toThrow(TypeException);
+    expect(() => {
+      clearUnnecessaryPar({ value: "10" });
+    }).toThrow(TypeException);
+    expect(() => {
+      clearUnnecessaryPar(false);
+    }).toThrow(TypeException);
+    expect(() => {
+      clearUnnecessaryPar(true);
+    }).toThrow(TypeException);
+    expect(() => {
+      clearUnnecessaryPar(null);
+    }).toThrow(TypeException);
   });
 });

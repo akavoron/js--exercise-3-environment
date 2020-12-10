@@ -6,7 +6,7 @@ import {
   getSmallest,
 } from "./ex-5";
 
-import { errMsg, TypeException, NumOfVariablesException } from "./exceptions";
+import { TypeException, NumOfVariablesException } from "./exceptions";
 
 describe("Function createArray", () => {
   const min = -5;
@@ -15,25 +15,35 @@ describe("Function createArray", () => {
   const arr = createArray(min, max, count);
 
   it("has exactly 3 parameters", () => {
-    try {
-      expect(createArray()).toThrow(NumOfVariablesException);
-      expect(createArray(-5, 5)).toThrow(NumOfVariablesException);
-      expect(createArray(-5, 5, 10, 20)).toThrow(NumOfVariablesException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      createArray();
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      createArray(-5, 5);
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      createArray(-5, 5, 10, 20);
+    }).toThrow(NumOfVariablesException);
   });
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(createArray("-5", 5, 10)).toThrow(TypeException);
-      expect(createArray(-5, [5], 10)).toThrow(TypeException);
-      expect(createArray(-5, 5, true)).toThrow(TypeException);
-      expect(createArray(-5, false, 10)).toThrow(TypeException);
-      expect(createArray(undefined, 5, 10)).toThrow(TypeException);
-      expect(createArray(-5, 5, null)).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      createArray("-5", 5, 10);
+    }).toThrow(TypeException);
+    expect(() => {
+      createArray(-5, [5], 10);
+    }).toThrow(TypeException);
+    expect(() => {
+      createArray(-5, 5, true);
+    }).toThrow(TypeException);
+    expect(() => {
+      createArray(-5, false, 10);
+    }).toThrow(TypeException);
+    expect(() => {
+      createArray(undefined, 5, 10);
+    }).toThrow(TypeException);
+    expect(() => {
+      createArray(-5, 5, null);
+    }).toThrow(TypeException);
   });
   it("should return an array", () => {
     expect(Array.isArray(arr)).toBe(true);
@@ -62,27 +72,35 @@ describe("Function createArray", () => {
 
 describe("Function getSumInsideArray", () => {
   it("has exactly 1 parameter", () => {
-    try {
-      expect(getSumInsideArray()).toThrow(NumOfVariablesException);
-      expect(getSumInsideArray([1, 2, 3], [1, 2, 3])).toThrow(
-        NumOfVariablesException
-      );
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      getSumInsideArray();
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      getSumInsideArray([1, 2, 3], [1, 2, 3]);
+    }).toThrow(NumOfVariablesException);
   });
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(getSumInsideArray(["1", 2, 3])).toThrow(TypeException);
-      expect(getSumInsideArray("1")).toThrow(TypeException);
-      expect(getSumInsideArray(true)).toThrow(TypeException);
-      expect(getSumInsideArray(false)).toThrow(TypeException);
-      expect(getSumInsideArray(null)).toThrow(TypeException);
-      expect(getSumInsideArray(undefined)).toThrow(TypeException);
-      expect(getSumInsideArray({})).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      getSumInsideArray(["1", 2, 3]);
+    }).toThrow(TypeException);
+    expect(() => {
+      getSumInsideArray("1");
+    }).toThrow(TypeException);
+    expect(() => {
+      getSumInsideArray(true);
+    }).toThrow(TypeException);
+    expect(() => {
+      getSumInsideArray(false);
+    }).toThrow(TypeException);
+    expect(() => {
+      getSumInsideArray(null);
+    }).toThrow(TypeException);
+    expect(() => {
+      getSumInsideArray(undefined);
+    }).toThrow(TypeException);
+    expect(() => {
+      getSumInsideArray({});
+    }).toThrow(TypeException);
   });
   it("should return a number", () => {
     expect(typeof getSumInsideArray([1, 0, 3])).toBe("number");
@@ -96,27 +114,35 @@ describe("Function getSumInsideArray", () => {
 
 describe("Function increaseArray2Times", () => {
   it("has exactly 1 parameter", () => {
-    try {
-      expect(increaseArray2Times()).toThrow(NumOfVariablesException);
-      expect(increaseArray2Times([1, 2, 3], [1, 2, 3])).toThrow(
-        NumOfVariablesException
-      );
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      increaseArray2Times();
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      increaseArray2Times([1, 2, 3], [1, 2, 3]);
+    }).toThrow(NumOfVariablesException);
   });
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(increaseArray2Times(["1", 2, 3])).toThrow(TypeException);
-      expect(increaseArray2Times("1")).toThrow(TypeException);
-      expect(increaseArray2Times(true)).toThrow(TypeException);
-      expect(increaseArray2Times(false)).toThrow(TypeException);
-      expect(increaseArray2Times(null)).toThrow(TypeException);
-      expect(increaseArray2Times(undefined)).toThrow(TypeException);
-      expect(increaseArray2Times({})).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      increaseArray2Times(["1", 2, 3]);
+    }).toThrow(TypeException);
+    expect(() => {
+      increaseArray2Times("1");
+    }).toThrow(TypeException);
+    expect(() => {
+      increaseArray2Times(true);
+    }).toThrow(TypeException);
+    expect(() => {
+      increaseArray2Times(false);
+    }).toThrow(TypeException);
+    expect(() => {
+      increaseArray2Times(null);
+    }).toThrow(TypeException);
+    expect(() => {
+      increaseArray2Times(undefined);
+    }).toThrow(TypeException);
+    expect(() => {
+      increaseArray2Times({});
+    }).toThrow(TypeException);
   });
   it("should return an array", () => {
     expect(Array.isArray(increaseArray2Times([1, 2, 3]))).toBe(true);
@@ -140,27 +166,35 @@ describe("Function increaseArray2Times", () => {
 
 describe("Function getGreatest", () => {
   it("has exactly 1 parameter", () => {
-    try {
-      expect(getGreatest()).toThrow(NumOfVariablesException);
-      expect(getGreatest([1, 2, 3], [1, 2, 3])).toThrow(
-        NumOfVariablesException
-      );
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      getGreatest();
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      getGreatest([1, 2, 3], [1, 2, 3]);
+    }).toThrow(NumOfVariablesException);
   });
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(getGreatest(["1", 2, 3])).toThrow(TypeException);
-      expect(getGreatest("1")).toThrow(TypeException);
-      expect(getGreatest(true)).toThrow(TypeException);
-      expect(getGreatest(false)).toThrow(TypeException);
-      expect(getGreatest(null)).toThrow(TypeException);
-      expect(getGreatest(undefined)).toThrow(TypeException);
-      expect(getGreatest({})).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      getGreatest(["1", 2, 3]);
+    }).toThrow(TypeException);
+    expect(() => {
+      getGreatest("1");
+    }).toThrow(TypeException);
+    expect(() => {
+      getGreatest(true);
+    }).toThrow(TypeException);
+    expect(() => {
+      getGreatest(false);
+    }).toThrow(TypeException);
+    expect(() => {
+      getGreatest(null);
+    }).toThrow(TypeException);
+    expect(() => {
+      getGreatest(undefined);
+    }).toThrow(TypeException);
+    expect(() => {
+      getGreatest({});
+    }).toThrow(TypeException);
   });
   it("should return a number", () => {
     expect(typeof getGreatest([1, 2, 3])).toBe("number");
@@ -172,27 +206,35 @@ describe("Function getGreatest", () => {
 
 describe("Function getSmallest", () => {
   it("has exactly 1 parameter", () => {
-    try {
-      expect(getSmallest()).toThrow(NumOfVariablesException);
-      expect(getSmallest([1, 2, 3], [1, 2, 3])).toThrow(
-        NumOfVariablesException
-      );
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      getSmallest();
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      getSmallest([1, 2, 3], [1, 2, 3]);
+    }).toThrow(NumOfVariablesException);
   });
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(getSmallest(["1", 2, 3])).toThrow(TypeException);
-      expect(getSmallest("1")).toThrow(TypeException);
-      expect(getSmallest(true)).toThrow(TypeException);
-      expect(getSmallest(false)).toThrow(TypeException);
-      expect(getSmallest(null)).toThrow(TypeException);
-      expect(getSmallest(undefined)).toThrow(TypeException);
-      expect(getSmallest({})).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      getSmallest(["1", 2, 3]);
+    }).toThrow(TypeException);
+    expect(() => {
+      getSmallest("1");
+    }).toThrow(TypeException);
+    expect(() => {
+      getSmallest(true);
+    }).toThrow(TypeException);
+    expect(() => {
+      getSmallest(false);
+    }).toThrow(TypeException);
+    expect(() => {
+      getSmallest(null);
+    }).toThrow(TypeException);
+    expect(() => {
+      getSmallest(undefined);
+    }).toThrow(TypeException);
+    expect(() => {
+      getSmallest({});
+    }).toThrow(TypeException);
   });
   it("should return a number", () => {
     expect(typeof getSmallest([1, 2, 3])).toBe("number");

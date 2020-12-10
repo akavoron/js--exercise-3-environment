@@ -1,6 +1,5 @@
 import { getBiggest, getMonthText, isFitCircleToSquare } from "./ex-2";
 import {
-  errMsg,
   TypeException,
   RangeException,
   NumOfVariablesException,
@@ -19,29 +18,42 @@ describe("The getBiggest function", () => {
   });
 
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(getBiggest([22], 30)).toThrow(TypeException);
-      expect(getBiggest(22, [30])).toThrow(TypeException);
-      expect(getBiggest("22", 30)).toThrow(TypeException);
-      expect(getBiggest(22, "30")).toThrow(TypeException);
-      expect(getBiggest(undefined, 30)).toThrow(TypeException);
-      expect(getBiggest(22, null)).toThrow(TypeException);
-      expect(getBiggest(true, 30)).toThrow(TypeException);
-      expect(getBiggest(22, false)).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      getBiggest([22], 30);
+    }).toThrow(TypeException);
+    expect(() => {
+      getBiggest(22, [30]);
+    }).toThrow(TypeException);
+    expect(() => {
+      getBiggest("22", 30);
+    }).toThrow(TypeException);
+    expect(() => {
+      getBiggest(22, "30");
+    }).toThrow(TypeException);
+    expect(() => {
+      getBiggest(undefined, 30);
+    }).toThrow(TypeException);
+    expect(() => {
+      getBiggest(22, null);
+    }).toThrow(TypeException);
+    expect(() => {
+      getBiggest(true, 30);
+    }).toThrow(TypeException);
+    expect(() => {
+      getBiggest(22, false);
+    }).toThrow(TypeException);
   });
 
-  it(`should push a NumOfVariablesException 
-        when wrong num of params`, () => {
-    try {
-      expect(getBiggest()).toThrow(NumOfVariablesException);
-      expect(getBiggest(0)).toThrow(NumOfVariablesException);
-      expect(getBiggest(0, 0, 0)).toThrow(NumOfVariablesException);
-    } catch (err) {
-      errMsg(err);
-    }
+  it(`should push a NumOfVariablesException when wrong num of params`, () => {
+    expect(() => {
+      getBiggest();
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      getBiggest(0);
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      getBiggest(0, 0, 0);
+    }).toThrow(NumOfVariablesException);
   });
 });
 
@@ -61,44 +73,52 @@ describe("The getMonthText function", () => {
     expect(getMonthText(12)).toBe("декабрь");
   });
 
-  it(`should push a RangeException 
-        when the param is not in the range`, () => {
-    try {
-      expect(getMonthText(0)).toThrow(RangeException);
-      expect(getMonthText(15)).toThrow(RangeException);
-      expect(getMonthText(-3)).toThrow(RangeException);
-    } catch (err) {
-      errMsg(err);
-    }
+  it(`should push a RangeException when the param is not in the range`, () => {
+    expect(() => {
+      getMonthText(0);
+    }).toThrow(RangeException);
+    expect(() => {
+      getMonthText(15);
+    }).toThrow(RangeException);
+    expect(() => {
+      getMonthText(-3);
+    }).toThrow(RangeException);
   });
 
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(getMonthText([2])).toThrow(TypeException);
-      expect(getMonthText(null)).toThrow(TypeException);
-      expect(getMonthText(undefined)).toThrow(TypeException);
-      expect(getMonthText("2")).toThrow(TypeException);
-      expect(getMonthText(true)).toThrow(TypeException);
-      expect(getMonthText(false)).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      getMonthText([2]);
+    }).toThrow(TypeException);
+    expect(() => {
+      getMonthText(null);
+    }).toThrow(TypeException);
+    expect(() => {
+      getMonthText(undefined);
+    }).toThrow(TypeException);
+    expect(() => {
+      getMonthText("2");
+    }).toThrow(TypeException);
+    expect(() => {
+      getMonthText(true);
+    }).toThrow(TypeException);
+    expect(() => {
+      getMonthText(false);
+    }).toThrow(TypeException);
   });
 
-  it(`should push a NumOfVariablesException 
-        when wrong num of params`, () => {
-    try {
-      expect(getMonthText()).toThrow(NumOfVariablesException);
-      expect(getMonthText(1, 2)).toThrow(NumOfVariablesException);
-    } catch (err) {
-      errMsg(err);
-    }
+  it(`should push a NumOfVariablesException when wrong num of params`, () => {
+    expect(() => {
+      getMonthText();
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      getMonthText(1, 2);
+    }).toThrow(NumOfVariablesException);
   });
 });
 
 describe("The isFitCircleToSquare function", () => {
   /*
-    Circle:
+    CIRCLE:
     S = Pi * R * R
     R * R = S/Pi
     R = √(S/Pi) 
@@ -119,7 +139,7 @@ describe("The isFitCircleToSquare function", () => {
     D = 2 * √(40/3.14)
     D = 7.14
 
-    Square:
+    SQUARE:
     S = a*a
     a = √S
 
@@ -140,27 +160,38 @@ describe("The isFitCircleToSquare function", () => {
   });
 
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(isFitCircleToSquare([20], 30)).toThrow(TypeException);
-      expect(isFitCircleToSquare(20, [30])).toThrow(TypeException);
-      expect(isFitCircleToSquare(20, "30")).toThrow(TypeException);
-      expect(isFitCircleToSquare("20", 30)).toThrow(TypeException);
-      expect(isFitCircleToSquare(null, 30)).toThrow(TypeException);
-      expect(isFitCircleToSquare(20, undefined)).toThrow(TypeException);
-      expect(isFitCircleToSquare(true, 30)).toThrow(TypeException);
-      expect(isFitCircleToSquare(20, false)).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      isFitCircleToSquare([20], 30);
+    }).toThrow(TypeException);
+    expect(() => {
+      isFitCircleToSquare(20, [30]);
+    }).toThrow(TypeException);
+    expect(() => {
+      isFitCircleToSquare(20, "30");
+    }).toThrow(TypeException);
+    expect(() => {
+      isFitCircleToSquare("20", 30);
+    }).toThrow(TypeException);
+    expect(() => {
+      isFitCircleToSquare(null, 30);
+    }).toThrow(TypeException);
+    expect(() => {
+      isFitCircleToSquare(20, undefined);
+    }).toThrow(TypeException);
+    expect(() => {
+      isFitCircleToSquare(true, 30);
+    }).toThrow(TypeException);
+    expect(() => {
+      isFitCircleToSquare(20, false);
+    }).toThrow(TypeException);
   });
 
-  it(`should push a NumOfVariablesException 
-        when wrong num of params`, () => {
-    try {
-      expect(isFitCircleToSquare()).toThrow(NumOfVariablesException);
-      expect(isFitCircleToSquare(10, 20, 30)).toThrow(NumOfVariablesException);
-    } catch (err) {
-      errMsg(err);
-    }
+  it(`should push a NumOfVariablesException when wrong num of params`, () => {
+    expect(() => {
+      isFitCircleToSquare();
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      isFitCircleToSquare(10, 20, 30);
+    }).toThrow(NumOfVariablesException);
   });
 });

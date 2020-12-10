@@ -1,5 +1,9 @@
 import { log } from "./render";
-import { TypeException, NumOfVariablesException } from "./exceptions";
+import {
+  TypeException,
+  NumOfVariablesException,
+  RangeException,
+} from "./exceptions";
 
 /**
  * 1. Вывести в консоль сумму
@@ -61,6 +65,9 @@ export function getMultTable(num) {
   }
   if (typeof num !== "number") {
     throw new TypeException("number");
+  }
+  if (num < 1) {
+    throw new RangeException();
   }
 
   const accumulator = [];

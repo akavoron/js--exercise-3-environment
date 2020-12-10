@@ -1,27 +1,35 @@
 import { diff, isWord, pow } from "./ex-6";
 
-import { errMsg, TypeException, NumOfVariablesException } from "./exceptions";
+import { TypeException, NumOfVariablesException } from "./exceptions";
 
 describe("Function diff", () => {
   it("has exactly 2 parameters", () => {
-    try {
-      expect(diff()).toThrow(NumOfVariablesException);
-      expect(diff(1)).toThrow(NumOfVariablesException);
-      expect(diff(1, 2, 3)).toThrow(NumOfVariablesException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      diff();
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      diff(1);
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      diff(1, 2, 3);
+    }).toThrow(NumOfVariablesException);
   });
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(diff("-5", 5)).toThrow(TypeException);
-      expect(diff(-5, null)).toThrow(TypeException);
-      expect(diff(undefined, 5)).toThrow(TypeException);
-      expect(diff(true, 5)).toThrow(TypeException);
-      expect(diff(-5, false)).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      diff("-5", 5);
+    }).toThrow(TypeException);
+    expect(() => {
+      diff(-5, null);
+    }).toThrow(TypeException);
+    expect(() => {
+      diff(undefined, 5);
+    }).toThrow(TypeException);
+    expect(() => {
+      diff(true, 5);
+    }).toThrow(TypeException);
+    expect(() => {
+      diff(-5, false);
+    }).toThrow(TypeException);
   });
   it("should returns number", () => {
     expect(typeof diff(5, 2)).toBe("number");
@@ -34,24 +42,32 @@ describe("Function diff", () => {
 
 describe("Function isWord", () => {
   it("has exactly 1 parameter", () => {
-    try {
-      expect(isWord()).toThrow(NumOfVariablesException);
-      expect(isWord("some", "text")).toThrow(NumOfVariablesException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      isWord();
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      isWord("some", "text");
+    }).toThrow(NumOfVariablesException);
   });
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(isWord(-5)).toThrow(TypeException);
-      expect(isWord(["some", "text"])).toThrow(TypeException);
-      expect(isWord({ prop: "value" })).toThrow(TypeException);
-      expect(isWord(true)).toThrow(TypeException);
-      expect(isWord(false)).toThrow(TypeException);
-      expect(isWord(undefined)).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      isWord(-5);
+    }).toThrow(TypeException);
+    expect(() => {
+      isWord(["some", "text"]);
+    }).toThrow(TypeException);
+    expect(() => {
+      isWord({ prop: "value" });
+    }).toThrow(TypeException);
+    expect(() => {
+      isWord(true);
+    }).toThrow(TypeException);
+    expect(() => {
+      isWord(false);
+    }).toThrow(TypeException);
+    expect(() => {
+      isWord(undefined);
+    }).toThrow(TypeException);
   });
   it("should returns boolean", () => {
     expect(typeof isWord("text")).toBe("boolean");
@@ -66,26 +82,38 @@ describe("Function isWord", () => {
 
 describe("Function pow", () => {
   it("has exactly 2 parameters", () => {
-    try {
-      expect(pow()).toThrow(NumOfVariablesException);
-      expect(pow(1)).toThrow(NumOfVariablesException);
-      expect(pow(1, 2, 3)).toThrow(NumOfVariablesException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      pow();
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      pow(1);
+    }).toThrow(NumOfVariablesException);
+    expect(() => {
+      pow(1, 2, 3);
+    }).toThrow(NumOfVariablesException);
   });
   it("should push a TypeException when the param's type is wrong", () => {
-    try {
-      expect(pow("-5", 5)).toThrow(TypeException);
-      expect(pow(5, [])).toThrow(TypeException);
-      expect(pow([], 2)).toThrow(TypeException);
-      expect(pow(null, 2)).toThrow(TypeException);
-      expect(pow(5, undefined)).toThrow(TypeException);
-      expect(pow(5, false)).toThrow(TypeException);
-      expect(pow(true, 2)).toThrow(TypeException);
-    } catch (err) {
-      errMsg(err);
-    }
+    expect(() => {
+      pow("-5", 5);
+    }).toThrow(TypeException);
+    expect(() => {
+      pow(5, []);
+    }).toThrow(TypeException);
+    expect(() => {
+      pow([], 2);
+    }).toThrow(TypeException);
+    expect(() => {
+      pow(null, 2);
+    }).toThrow(TypeException);
+    expect(() => {
+      pow(5, undefined);
+    }).toThrow(TypeException);
+    expect(() => {
+      pow(5, false);
+    }).toThrow(TypeException);
+    expect(() => {
+      pow(true, 2);
+    }).toThrow(TypeException);
   });
   it("should returns number", () => {
     expect(typeof pow(2, 3)).toBe("number");

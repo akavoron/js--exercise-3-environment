@@ -10,6 +10,7 @@ module.exports = {
     sourceType: "module",
   },
   rules: {
+    "no-new": "off",
     "import/prefer-default-export": "off",
     "max-len": ["error", { code: 100, ignoreComments: true }],
     "no-plusplus": ["error", { allowForLoopAfterthoughts: true }],
