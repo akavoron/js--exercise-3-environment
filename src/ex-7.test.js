@@ -1,5 +1,9 @@
 import {
   config,
+  inpText,
+  btn,
+  form,
+  content,
   createElements,
   addNewParagraph,
   clearUnnecessaryPar,
@@ -10,33 +14,28 @@ import { TypeException, NumOfVariablesException } from "./exceptions";
 
 createElements();
 
-const contEl = document.querySelector(".content");
-const formEl = document.querySelector("form");
-const inpTextEl = document.querySelector("input[type=text]");
-const btnEl = document.querySelector("button");
-
 describe("On the page", () => {
   it("we have all necessary elements", () => {
-    expect(contEl !== null).toBe(true);
-    expect(formEl !== null).toBe(true);
-    expect(inpTextEl !== null).toBe(true);
-    expect(btnEl !== null).toBe(true);
+    expect(content !== null).toBe(true);
+    expect(form !== null).toBe(true);
+    expect(inpText !== null).toBe(true);
+    expect(btn !== null).toBe(true);
   });
   it("the input text is hidden by default", () => {
-    expect(btnEl.hidden).toBe(true);
+    expect(btn.hidden).toBe(true);
   });
   it("we have three paragraphs", () => {
     expect(document.querySelectorAll(".content p").length).toBe(3);
   });
   it("the input[type=text] is empty", () => {
-    expect(inpTextEl.value).toBe("");
+    expect(inpText.value).toBe("");
   });
 });
 
 describe("Function init", () => {
   it("attach a listener on the form element", () => {
     init();
-    expect(typeof formEl.onsubmit === "function").toBe(true);
+    expect(typeof form.onsubmit === "function").toBe(true);
   });
 });
 
@@ -44,27 +43,26 @@ describe("Function addNewParagraph", () => {
   const buff = {};
 
   beforeEach(() => {
-    buff.contEl = document.querySelector(".content").cloneNode(true);
-    buff.formEl = document.querySelector("form").cloneNode(true);
-    buff.inpTextEl = document.querySelector("input[type=text]").cloneNode(true);
-    buff.btnEl = document.querySelector("button").cloneNode(true);
+    buff.content = content.cloneNode(true);
+    buff.form = form.cloneNode(true);
+    buff.inpText = inpText.cloneNode(true);
+    buff.btn = btn.cloneNode(true);
   });
 
   afterEach(() => {
-    document.querySelector(".content").replaceWith(buff.contEl);
-    document.querySelector("form").replaceWith(buff.formEl);
-    document.querySelector("input[type=text]").replaceWith(inpTextEl);
-    document.querySelector("button").replaceWith(btnEl);
+    content.replaceWith(buff.content);
+    form.replaceWith(buff.form);
+    inpText.replaceWith(buff.inpText);
+    btn.replaceWith(buff.btn);
   });
 
   it("adds new paragraphs at the end of a list when the form is submitted", () => {
     init();
 
-    inpTextEl.value = "test";
-    formEl.submit();
+    inpText.value = "test";
+    form.submit();
 
-    const flag =
-      document.querySelector(".content p:last-child").innerText === "test";
+    const flag = content.querySelector("p:last-child").innerText === "test";
     expect(flag).toBe(true);
   });
 
@@ -73,7 +71,7 @@ describe("Function addNewParagraph", () => {
       addNewParagraph(`test ${i}`);
       clearUnnecessaryPar(config.num);
     }
-    expect(document.querySelectorAll(".content p").length).toBe(config.num);
+    expect(content.querySelectorAll("p").length).toBe(config.num);
   });
 
   it("has exactly 1 parameters", () => {

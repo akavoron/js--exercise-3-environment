@@ -40,6 +40,11 @@ export function createElements() {
 }
 createElements();
 
+export const inpText = document.querySelector("input[type=text]");
+export const btn = document.querySelector("button");
+export const form = document.querySelector("form");
+export const content = document.querySelector(".content");
+
 export const config = {
   num: 5,
 };
@@ -59,7 +64,7 @@ export function addNewParagraph(text) {
 
   const newP = document.createElement("p");
   newP.innerText = text;
-  document.querySelector(".content").appendChild(newP);
+  content.appendChild(newP);
 }
 
 /**
@@ -72,8 +77,8 @@ export function clearUnnecessaryPar(num = 5) {
     throw new TypeException("number");
   }
 
-  if (document.querySelectorAll(".content p").length > num) {
-    document.querySelector(".content p").remove();
+  if (content.querySelectorAll("p").length > num) {
+    content.querySelector("p").remove();
   }
 }
 
@@ -83,19 +88,18 @@ export function clearUnnecessaryPar(num = 5) {
  * @return {undefined}
  */
 export function init() {
-  document.querySelector("form").onsubmit = (e) => {
+  form.onsubmit = (e) => {
     e.preventDefault();
 
-    addNewParagraph(document.querySelector("input[type=text]").value);
+    addNewParagraph(inpText.value);
     clearUnnecessaryPar(config.num);
 
-    document.querySelector("input[type=text]").value = "";
-    document.querySelector("button").hidden = true;
+    inpText.value = "";
+    btn.hidden = true;
   };
 
-  document.querySelector("input[type=text]").addEventListener("keyup", () => {
-    document.querySelector("button").hidden =
-      document.querySelector("input[type=text]").value === "";
+  inpText.addEventListener("keyup", () => {
+    btn.hidden = inpText.value === "";
   });
 }
 
