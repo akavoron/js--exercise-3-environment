@@ -1,4 +1,4 @@
-import { log } from "./render";
+import { log, askFor } from "./render";
 import { TypeException, NumOfVariablesException } from "./exceptions";
 
 /**
@@ -81,8 +81,8 @@ const user = new Person("John");
  * Записать введенное значение в поле
  * age объекта user.
  */
-// const userAge = +askFor("Введите возраст пользователя");
-const userAge = +"20";
+const userAge = +askFor("Введите возраст пользователя");
+// const userAge = +"20";
 user.setAge(userAge);
 
 /**
