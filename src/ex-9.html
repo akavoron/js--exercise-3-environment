@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTUS</title>
+  </head>
+  <body>
+    <script type="module">
+      import { log, askFor } from "./render.js";
+      import {
+        isRightTriagle,
+        getParamsOfCircle,
+        getRootOfQuadraticEquation,
+      } from "./ex-9.js";
+
+      /**
+       * 1. Даны длины трёх сторон треугольника.
+       * Определить, является ли треугольник прямоугольным.
+       */
+      log(
+        `Треугольник ${
+          isRightTriagle(3, 4, 5) ? "является" : "не является"
+        } прямоугольным`
+      );
+
+      /**
+       * 2. Пользователь вводит число R.
+       * Написать программу, которая выведет в консоль
+       * длину окружности и площадь круга с радиусом R.
+       */
+      const radius = +askFor("Type R");
+      const circleParams = getParamsOfCircle(radius);
+      log(`Длина окружности: ${circleParams.c}, площадь: ${circleParams.s}`);
+
+      /**
+       * 3. Пользователь вводит числа a, b и c.
+       * Написать программу, выводящую корни квадратного уравнения
+       * с коэффициентами a, b и c.
+       */
+      log(
+        `Корни квадратного уравнения: ${getRootOfQuadraticEquation(1, -4, 4)}`
+      );
+    </script>
+  </body>
+</html>

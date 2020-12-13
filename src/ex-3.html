@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTUS</title>
+  </head>
+  <body>
+    <script type="module">
+      import {
+        TypeException,
+        NumOfVariablesException,
+        RangeException,
+        errMsg,
+      } from "./exceptions.js";
+      import { log, askFor } from "./render.js";
+      import { sumInRange, getMultTable, averageOfOdd } from "./ex-3.js";
+
+      try {
+        /**
+         * 1. Вывести в консоль сумму
+         * всех целых чисел от 50 до 100.
+         */
+        log(
+          `Сумма всех целых чисел из диапазона от 50 до 100: ${sumInRange(
+            50,
+            100
+          )}`
+        );
+
+        /**
+         * 2. Вывести в консоль таблицу умножения на 7.
+         * 7 x 1 = 7
+         * 7 x 2 = 14
+         * ...
+         * 7 x 9 = 63
+         */
+        log(getMultTable(7));
+
+        /**
+         * 3. Запросить у пользователя ввод числа N.
+         * Вывести в консоль среднее арифметическое
+         * всех нечётных чисел от 1 до N.
+         */
+        const n = +askFor(
+          "Введите N для подсчета ср. арифм. всех нечетных от 1 до N"
+        );
+        if (n < 1) {
+          throw new RangeException();
+        }
+        log(
+          `Среднее арифметическое всех нечетных от 1 до ${n}: ${averageOfOdd(
+            1,
+            n
+          )}`
+        );
+      } catch (e) {
+        errMsg(e);
+      }
+    </script>
+  </body>
+</html>

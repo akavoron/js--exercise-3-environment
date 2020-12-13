@@ -1,17 +1,8 @@
-import { log, askFor } from "./render";
-
 import {
   TypeException,
   ParamLengthException,
   NumOfVariablesException,
-} from "./exceptions";
-
-/**
- * 1. В переменных a и b хранятся числа.
- * Написать программу, которая выводит
- * в консоль произведение и сумму этих
- * чисел.
- */
+} from "./exceptions.js";
 
 /**
  * Произведение двух чисел
@@ -31,8 +22,6 @@ export function mul(a, b) {
   return a * b;
 }
 
-log(`Произведение 2x3 = ${mul(2, 3)}`);
-
 /**
  * Сумма двух чисел
  *
@@ -51,15 +40,6 @@ export function sum(a, b) {
   return a + b;
 }
 
-log(`Сумма 2+3 = ${sum(2, 3)}`);
-
-/**
- * 2. В двух переменных хранятся строки
- * символов. Написать программу, которая
- * выведет в консоль суммарное количество
- * символов в обоих строках.
- */
-
 /**
  * Суммарное количество символов в 2 строках
  *
@@ -77,20 +57,6 @@ export function getStringsLength(firstString, secondString) {
 
   return firstString.length + secondString.length;
 }
-
-log(
-  `Сумма символов в строках "some" и "text here": ${getStringsLength(
-    "some",
-    "text here"
-  )}`
-);
-
-/**
- * 3. Написать программу, которая запрашивает
- * у пользователя ввод трёхзначного числа
- * , а потом выводит в консоль сумму цифр
- * введённого числа.
- */
 
 /**
  * Сумма всех цифр в числе
@@ -118,6 +84,3 @@ export function getSumOfInlineDigits(number) {
 
   return accumulator;
 }
-
-const num = +askFor("Type a number with 3 digits:");
-log(getSumOfInlineDigits(num));

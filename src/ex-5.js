@@ -1,9 +1,4 @@
-import { log } from "./render";
-import { TypeException, NumOfVariablesException } from "./exceptions";
-
-/**
- * Создайте массив целых чисел из 10 элементов.
- */
+import { TypeException, NumOfVariablesException } from "./exceptions.js";
 
 /**
  * Возвращает массив случайных целых чисел
@@ -33,13 +28,6 @@ export function createArray(min, max, count) {
   return arr;
 }
 
-const numArr = createArray(-5, 5, 10);
-log(`Создали массив со случайными значениями: ${numArr}`);
-
-/**
- * 1. Выведите в консоль сумму всех элементов массива.
- */
-
 /**
  * Возвращает сумму всех чисел в числовом массиве
  *
@@ -67,15 +55,6 @@ export function getSumInsideArray(arr) {
   return accumulator;
 }
 
-log(`Сумма всех чисел в массиве: ${getSumInsideArray(numArr)}`);
-
-/**
- * 2. Создайте новый массив на основе исходного,
- * в котором каждый элемент будет вдвое больше
- * элемента исходного массива с таким же индексом.
- * (a[1] = 3, b[1] = 6, где a — исходный массив, b — новый массив).
- */
-
 /**
  * Увеличивает значения в числовом массиве в 2 раза
  *
@@ -102,14 +81,6 @@ export function increaseArray2Times(oldArr) {
 
   return newArr;
 }
-
-log(`Увеличили значения массива в 2 раза: ${increaseArray2Times(numArr)}`);
-
-/**
- * 3. Найдите и выведите в консоль
- * наибольший и наименьший
- * элементы исходного массива.
- */
 
 /**
  * Возвращает наибольшее число в массиве
@@ -139,8 +110,6 @@ export function getGreatest(arr) {
   return greatest;
 }
 
-log(`Наибольшее число в исходном массиве: ${getGreatest(numArr)}`);
-
 /**
  * Возвращает наименьшее число в массиве
  *
@@ -168,5 +137,3 @@ export function getSmallest(arr) {
 
   return smallest;
 }
-
-log(`Наименьшее число в исходном массиве: ${getSmallest(numArr)}`);

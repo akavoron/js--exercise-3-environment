@@ -8,8 +8,8 @@ import { askFor, log } from "./render";
 
 describe("Function isRightTriagle", () => {
   it("works correctly", () => {
-    expect(isRightTriagle(2, 3, 13)).toBe(true);
-    expect(isRightTriagle(3, 2, 15)).toBe(false);
+    expect(isRightTriagle(3, 4, 5)).toBe(true);
+    expect(isRightTriagle(15, 20, 20)).toBe(false);
   });
 });
 

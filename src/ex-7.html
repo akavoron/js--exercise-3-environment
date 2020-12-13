@@ -7,7 +7,11 @@
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="./exceptions.js"></script>
-    <script type="module" src="./ex-7.js"></script>
+
+    <script type="module">
+      import { createLayout } from "./ex-7.js";
+
+      createLayout(document.querySelector("#app"));
+    </script>
   </body>
 </html>

@@ -1,15 +1,8 @@
-import { log } from "./render";
-
 import {
   TypeException,
   RangeException,
   NumOfVariablesException,
-} from "./exceptions";
-
-/**
- * 1. В переменных a и b хранятся числа.
- * Вывести в консоль наибольшее из них.
- */
+} from "./exceptions.js";
 
 /**
  * Получает большее из двух чисел
@@ -28,16 +21,6 @@ export function getBiggest(a, b) {
 
   return a > b ? a : b;
 }
-
-const a = 10;
-const b = 22;
-log(`Наибольшее число между ${a} и ${b} это ${getBiggest(a, b)}`);
-
-/**
- * 2. Запросить у пользователя ввод числа от 1 до 12.
- * Вывести в консоль название месяца, соответствующее
- * этому числу (1 — январь, 2 — февраль и т.д.).
- */
 
 /**
  * Выводит текстовое представление месяца
@@ -128,17 +111,6 @@ export function getMonthText2(mNum) {
   return mName;
 }
 
-const monthNumber = 7;
-log(`${monthNumber} – ${getMonthText(monthNumber)}`);
-// log(`${monthNumber} – ${getMonthText2(monthNumber)}`);
-
-/**
- * 3. В переменных circle и square хранятся
- * площади круга и квадрата соответственно.
- * Написать программу, которая определяет,
- * поместится ли круг в квадрат.
- */
-
 /**
  * Проверяет поместится ли круг в квадрат
  *
@@ -162,15 +134,3 @@ export function isFitCircleToSquare(circle, square) {
 
   return circleD <= squareA;
 }
-
-const circle = 10;
-const square = 20;
-let fitStr;
-
-if (isFitCircleToSquare(circle, square)) {
-  fitStr = "сможет поместиться";
-} else {
-  fitStr = "не сможет поместится";
-}
-
-log(`Круг с площадью ${circle} ${fitStr} в квадрат с площадью ${square}`);

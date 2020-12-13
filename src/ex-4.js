@@ -1,5 +1,4 @@
-import { log, askFor } from "./render";
-import { TypeException, NumOfVariablesException } from "./exceptions";
+import { TypeException, NumOfVariablesException } from "./exceptions.js";
 
 /**
  * Конструктор персоны
@@ -26,9 +25,8 @@ export function Person(name, age, role) {
    * Изменяет возраст пользователя
    *
    * @param {number} age
-   * @return {object}
    */
-  this.setAge = function (newAge) {
+  this.setAge = function setAge(newAge) {
     if (arguments.length !== 1) {
       throw new NumOfVariablesException();
     }
@@ -42,9 +40,8 @@ export function Person(name, age, role) {
    * Изменяет роль пользователя
    *
    * @param {string} role
-   * @return {object}
    */
-  this.setRole = function (newRole) {
+  this.setRole = function setRole(newRole) {
     if (arguments.length !== 1) {
       throw new NumOfVariablesException();
     }
@@ -68,35 +65,3 @@ export function copyPerson(person) {
 
   return { ...person };
 }
-
-/**
- * Создайте объект user,
- * содержащий поле name
- * со значением ‘John’.
- */
-const user = new Person("John");
-
-/**
- * 1. Запросить у пользователя ввод числа.
- * Записать введенное значение в поле
- * age объекта user.
- */
-const userAge = +askFor("Введите возраст пользователя");
-// const userAge = +"20";
-user.setAge(userAge);
-
-/**
- * 2. Создать копию объекта user с именем admin.
- * Добавить новому объекту поле role
- * со значением ‘admin’.
- */
-const admin = copyPerson(user);
-admin.setRole("admin");
-
-/**
- * 3. Записать все значения полей объекта admin
- * в отдельные переменные. Имена переменных
- * должны совпадать с названиями полей.
- */
-const { name, age, role } = admin;
-log(`Значения переменных: name=${name}, age=${age}, role=${role}`);

@@ -1,9 +1,9 @@
-import { log, askFor } from "./render";
+import { log, askFor } from "./render.js";
 import {
   TypeException,
   NumOfVariablesException,
   ParamFormatException,
-} from "./exceptions";
+} from "./exceptions.js";
 
 /**
  * Проверяет строку c датой на формат dd.mm.yyyy
@@ -56,11 +56,6 @@ export function getDateFromString(dateString) {
 }
 
 /**
- * 1. Запросите у пользователя дату в формате ДД.ММ.ГГГГ.
- * Напишите программу, выводящую день недели по введённой дате.
- */
-
-/**
  * Возвращает день недели по введенной дате.
  *
  * @param {string} dateString
@@ -106,13 +101,6 @@ export function getMinutes() {
 
   return Math.round((now - startOfTheDay) / 1000 / 60);
 }
-log(getMinutes());
-
-/**
- * 3. В двух переменных хранятся даты рождения двух пользователей
- * в формате ДД.ММ.ГГГГ.
- * Написать программу, которая определяет более молодого пользователя.
- */
 
 /**
  * Выводит более позднюю дату

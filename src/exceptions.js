@@ -1,5 +1,3 @@
-import { log } from "./render";
-
 export function TypeException(rightType) {
   if (rightType) {
     this.message = `You should use a ${rightType} type in the param.`;
@@ -30,5 +28,5 @@ export function ParamFormatException() {
 }
 
 export function errMsg(e) {
-  log(e.name, e.message);
+  alert(`${e.name}: ${e.message}`);
 }

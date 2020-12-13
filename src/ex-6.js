@@ -1,4 +1,4 @@
-import { TypeException, NumOfVariablesException } from "./exceptions";
+import { TypeException, NumOfVariablesException } from "./exceptions.js";
 
 /**
  * 1. Напишите функцию diff,
@@ -37,7 +37,7 @@ export function isWord(string) {
     throw new TypeException("string");
   }
 
-  return string.trim().split(" ").length === 1;
+  return string.trim().split(/,\s*|\s+/).length === 1;
 }
 
 /**

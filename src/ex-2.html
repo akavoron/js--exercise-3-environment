@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTUS</title>
+  </head>
+  <body>
+    <script type="module">
+      import {
+        TypeException,
+        RangeException,
+        NumOfVariablesException,
+        errMsg,
+      } from "./exceptions.js";
+      import { log } from "./render.js";
+      import { getBiggest, getMonthText, isFitCircleToSquare } from "./ex-2.js";
+
+      try {
+        /**
+         * 1. В переменных a и b хранятся числа.
+         * Вывести в консоль наибольшее из них.
+         */
+        const a = 10;
+        const b = 22;
+        log(`Наибольшее число между ${a} и ${b} это ${getBiggest(a, b)}`);
+
+        /**
+         * 2. Запросить у пользователя ввод числа от 1 до 12.
+         * Вывести в консоль название месяца, соответствующее
+         * этому числу (1 — январь, 2 — февраль и т.д.).
+         */
+        const monthNumber = 7;
+        log(`${monthNumber} месяц по счету это ${getMonthText(monthNumber)}`);
+        // log(`${monthNumber} месяц по счету это ${getMonthText2(monthNumber)}`);
+
+        /**
+         * 3. В переменных circle и square хранятся
+         * площади круга и квадрата соответственно.
+         * Написать программу, которая определяет,
+         * поместится ли круг в квадрат.
+         */
+        const circle = 10;
+        const square = 20;
+        let fitStr;
+
+        if (isFitCircleToSquare(circle, square)) {
+          fitStr = "сможет поместиться";
+        } else {
+          fitStr = "не сможет поместится";
+        }
+
+        log(
+          `Круг с площадью ${circle} ${fitStr} в квадрат с площадью ${square}`
+        );
+      } catch (e) {
+        errMsg(e);
+      }
+    </script>
+  </body>
+</html>

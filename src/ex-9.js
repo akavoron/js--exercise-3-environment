@@ -1,5 +1,3 @@
-import { log, askFor } from "./render";
-
 /**
  * 1. Даны длины трёх сторон треугольника.
  * Определить, является ли треугольник прямоугольным.
@@ -14,9 +12,9 @@ export function isRightTriagle(a, b, c) {
     return j - i;
   }
 
-  const arr = [a, b, c].sort(sortDescending); // or arguments array, but eslint'll show an error
+  const [hyp, sideOne, sideTwo] = [a, b, c].sort(sortDescending); // or arguments array, but eslint'll show an error
 
-  return arr[0] === arr[1] ** 2 + arr[2] ** 2;
+  return hyp ** 2 === sideOne ** 2 + sideTwo ** 2;
 }
 
 /**
@@ -33,16 +31,6 @@ export function getParamsOfCircle(r) {
     s: Math.PI * r ** 2,
   };
 }
-
-const radius = +askFor("Type R");
-const circleParams = getParamsOfCircle(radius);
-log(`Длина окружности: ${circleParams.c}, площадь: ${circleParams.s}`);
-
-/**
- * Пользователь вводит числа a, b и c.
- * Написать программу, выводящую корни квадратного уравнения
- * с коэффициентами a, b и c.
- */
 
 /**
  * Выводит корни квадратного уравнения

@@ -1,106 +1,59 @@
-import { TypeException, NumOfVariablesException } from "./exceptions";
+export function createLayout(el) {
+  const h1 = document.createElement("h1");
+  const form = document.createElement("form");
+  const inpText = document.createElement("input");
+  const button = document.createElement("button");
+  const content = document.createElement("div");
 
-/**
- * Сверстать страницу и подключить к ней файл со скриптом.
- *
- * На странице должны быть:
- * – три текстовых параграфа
- * – поле ввода
- * – кнопка
- *
- * Напишите скрипт, который будет выполнять следующие условия:
- * 1. Кнопка скрыта, если в поле ввода нет значения.
- *
- * 2. При клике на кнопку добавляется новый параграф,
- * содержащий текст из поля ввода.
- *
- * 3. Если параграфов становится больше 5,
- * первый из них удаляется.
- */
+  // create header
+  h1.innerText = "Exercise 7";
+  el.appendChild(h1);
 
-/**
- * Создает элементы на странице
- *
- * @return {undefined}
- */
+  // create form
+  inpText.setAttribute("type", "text");
+  inpText.setAttribute("value", "");
+  inpText.setAttribute("placeholder", "Type text here...");
 
-export function createElements() {
-  document.body.innerHTML = `
-        <h1>Exercise 7</h1>
-        <form action="">
-            <input type="text" value="" placeholder="Type text here...">
-            <button hidden>Add</button>
-        </form>
-        <div class="content">
-            <p>Some text here</p>
-            <p>Just another text</p>
-            <p>Lorem Ipsum</p>
-        </div>
-    `;
-}
-createElements();
+  button.setAttribute("hidden", "");
+  button.innerText = "Add";
 
-export const inpText = document.querySelector("input[type=text]");
-export const btn = document.querySelector("button");
-export const form = document.querySelector("form");
-export const content = document.querySelector(".content");
+  form.appendChild(inpText);
+  form.appendChild(button);
 
-export const config = {
-  num: 5,
-};
+  el.appendChild(form);
 
-/**
- * Adds new paragraph
- *
- * @return {undefined}
- */
-export function addNewParagraph(text) {
-  if (arguments.length !== 1) {
-    throw new NumOfVariablesException();
-  }
-  if (typeof text !== "string") {
-    throw new TypeException("string");
+  // create content
+  content.className = "content";
+  content.innerHTML = `
+    <p>Some text here</p>
+    <p>Just another text</p>
+    <p>Lorem Ipsum</p>
+  `;
+  el.appendChild(content);
+
+  function addNewParagraph(text) {
+    const newP = document.createElement("p");
+    newP.innerText = text;
+    content.appendChild(newP);
   }
 
-  const newP = document.createElement("p");
-  newP.innerText = text;
-  content.appendChild(newP);
-}
-
-/**
- * Clear unnecessary paragraphs
- *
- * @return {undefined}
- */
-export function clearUnnecessaryPar(num = 5) {
-  if (typeof num !== "number") {
-    throw new TypeException("number");
+  function clearUnnecessaryPar(num = 5) {
+    if (content.querySelectorAll("p").length > num) {
+      content.querySelector("p").remove();
+    }
   }
 
-  if (content.querySelectorAll("p").length > num) {
-    content.querySelector("p").remove();
-  }
-}
-
-/**
- * Initialization
- *
- * @return {undefined}
- */
-export function init() {
-  form.onsubmit = (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     addNewParagraph(inpText.value);
-    clearUnnecessaryPar(config.num);
+    clearUnnecessaryPar();
 
     inpText.value = "";
-    btn.hidden = true;
-  };
+    button.hidden = true;
+  });
 
   inpText.addEventListener("keyup", () => {
-    btn.hidden = inpText.value === "";
+    button.hidden = inpText.value === "";
   });
 }
-
-init();

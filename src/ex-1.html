@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTUS</title>
+  </head>
+  <body>
+    <script type="module">
+      import {
+        TypeException,
+        ParamLengthException,
+        NumOfVariablesException,
+        errMsg,
+      } from "./exceptions.js";
+      import { log, askFor } from "./render.js";
+      import {
+        mul,
+        sum,
+        getStringsLength,
+        getSumOfInlineDigits,
+      } from "./ex-1.js";
+
+      try {
+        /**
+         * 1. В переменных a и b хранятся числа.
+         * Написать программу, которая выводит
+         * в консоль произведение и сумму этих
+         * чисел.
+         */
+        log(`Произведение 2x3 = ${mul(2, 3)}`);
+        log(`Сумма 2+3 = ${sum(2, 3)}`);
+
+        /**
+         * 2. В двух переменных хранятся строки
+         * символов. Написать программу, которая
+         * выведет в консоль суммарное количество
+         * символов в обоих строках.
+         */
+        log(
+          `Сумма символов в строках "some" и "text here": ${getStringsLength(
+            "some",
+            "text here"
+          )}`
+        );
+
+        /**
+         * 3. Написать программу, которая запрашивает
+         * у пользователя ввод трёхзначного числа
+         * , а потом выводит в консоль сумму цифр
+         * введённого числа.
+         */
+        const num = +askFor("Type a number with 3 digits:");
+        log(`Сумма цифр введенного числа: ${getSumOfInlineDigits(num)}`);
+      } catch (e) {
+        errMsg(e);
+      }
+    </script>
+  </body>
+</html>

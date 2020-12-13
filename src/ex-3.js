@@ -1,14 +1,8 @@
-import { log, askFor } from "./render";
 import {
   TypeException,
   NumOfVariablesException,
   RangeException,
-} from "./exceptions";
-
-/**
- * 1. Вывести в консоль сумму
- * всех целых чисел от 50 до 100.
- */
+} from "./exceptions.js";
 
 /**
  * Получает сумму всех целых чисел из диапазона
@@ -43,16 +37,6 @@ export function sumInRange(from, to) {
   return accumulator;
 }
 
-log(`Сумма всех целых чисел из диапазона от 50 до 100: ${sumInRange(50, 100)}`);
-
-/**
- * 2. Вывести в консоль таблицу умножения на 7.
- * 7 x 1 = 7
- * 7 x 2 = 14
- * ...
- * 7 x 9 = 63
- */
-
 /**
  * Получает таблицу умножения на число
  *
@@ -78,14 +62,6 @@ export function getMultTable(num) {
 
   return accumulator;
 }
-
-log(getMultTable(7));
-
-/**
- * 3. Запросить у пользователя ввод числа N.
- * Вывести в консоль среднее арифметическое
- * всех нечётных чисел от 1 до N.
- */
 
 /**
  * Находит среднее арифметическое всех нечетных чисел в диапазоне
@@ -125,6 +101,3 @@ export function averageOfOdd(from, to) {
 
   return Number((accumulator / count).toFixed(3));
 }
-
-const n = +askFor("Введите N для подсчета ср. арифм. всех нечетных от 1 до N");
-log(averageOfOdd(1, n));
