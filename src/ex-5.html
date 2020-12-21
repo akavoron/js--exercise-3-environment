@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTUS</title>
+  </head>
+  <body>
+    <script type="module">
+      import {
+        TypeException,
+        NumOfVariablesException,
+        errMsg,
+      } from "./exceptions.js";
+      import { log } from "./render.js";
+      import {
+        createArray,
+        getSumInsideArray,
+        increaseArray2Times,
+        getGreatest,
+        getSmallest,
+      } from "./ex-5.js";
+
+      try {
+        /**
+         * Создайте массив целых чисел из 10 элементов.
+         */
+        const numArr = createArray(-5, 5, 10);
+        log(`Создали массив со случайными значениями: ${numArr}`);
+
+        /**
+         * 1. Выведите в консоль сумму всех элементов массива.
+         */
+        log(`Сумма всех чисел в массиве: ${getSumInsideArray(numArr)}`);
+
+        /**
+         * 2. Создайте новый массив на основе исходного,
+         * в котором каждый элемент будет вдвое больше
+         * элемента исходного массива с таким же индексом.
+         * (a[1] = 3, b[1] = 6, где a — исходный массив, b — новый массив).
+         */
+        log(
+          `Увеличили значения массива в 2 раза: ${increaseArray2Times(numArr)}`
+        );
+
+        /**
+         * 3. Найдите и выведите в консоль
+         * наибольший и наименьший
+         * элементы исходного массива.
+         */
+        log(`Наибольшее число в исходном массиве: ${getGreatest(numArr)}`);
+        log(`Наименьшее число в исходном массиве: ${getSmallest(numArr)}`);
+      } catch (e) {
+        errMsg(e);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTUS</title>
+  </head>
+  <body>
+    <script type="module">
+      import {
+        TypeException,
+        NumOfVariablesException,
+        errMsg,
+      } from "./exceptions.js";
+      import { log, askFor } from "./render.js";
+      import { Person, copyPerson } from "./ex-4.js";
+
+      try {
+        /**
+         * Создайте объект user,
+         * содержащий поле name
+         * со значением ‘John’.
+         */
+        const user = new Person("John");
+
+        /**
+         * 1. Запросить у пользователя ввод числа.
+         * Записать введенное значение в поле
+         * age объекта user.
+         */
+        const userAge = +askFor("Введите возраст пользователя");
+        // const userAge = +"20";
+        user.setAge(userAge);
+
+        /**
+         * 2. Создать копию объекта user с именем admin.
+         * Добавить новому объекту поле role
+         * со значением ‘admin’.
+         */
+        const admin = copyPerson(user);
+        admin.setRole("admin");
+
+        /**
+         * 3. Записать все значения полей объекта admin
+         * в отдельные переменные. Имена переменных
+         * должны совпадать с названиями полей.
+         */
+        const { name, age, role } = admin;
+        log(`Значения переменных: name=${name}, age=${age}, role=${role}`);
+      } catch (e) {
+        errMsg(e);
+      }
+    </script>
+  </body>
+</html>
